@@ -382,6 +382,11 @@
                     <h3>🌍 Foreign Policy</h3>
                     <p>International relations approach, military strategy, alliance policies, and America First foreign policy principles.</p>
                 </div>
+
+                <div class="category-card" onclick="showDetail('potpourri')">
+                    <h3>🎭 Potpourri</h3>
+                    <p>Unconventional actions, personal vendettas, controversies, and surprising moves that don't fit traditional policy categories.</p>
+                </div>
             </div>
 
             <!-- Immigration Detail View -->
@@ -881,6 +886,128 @@
                 </div>
             </div>
 
+            <!-- Potpourri Detail View -->
+            <div id="potpourri-detail" class="detail-view hidden">
+                <div class="detail-header">
+                    <h2 class="detail-title">Potpourri</h2>
+                    <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <div class="summary-section">
+                    <h4>Policy Summary</h4>
+                    <p>Beyond traditional policy areas, Trump's presidency and political career include numerous unconventional actions, personal conflicts, and controversial decisions that don't fit neatly into standard categories but significantly impact his administration and legacy.</p>
+                    <p>These range from attempts to influence Federal Reserve policy and retaliatory actions against perceived enemies, to various scandals and surprising positive outcomes from unorthodox approaches.</p>
+                </div>
+
+                <div class="analysis-section">
+                    <h4>Analysis & Perspectives</h4>
+                    
+                    <div class="perspective-tabs">
+                        <button class="tab-button active" onclick="showPerspective('potpourri', 'supportive')">Positive Outcomes</button>
+                        <button class="tab-button" onclick="showPerspective('potpourri', 'critical')">Concerning Actions</button>
+                        <button class="tab-button" onclick="showPerspective('potpourri', 'contradictions')">Contradictions</button>
+                    </div>
+
+                    <div id="potpourri-supportive" class="perspective-content active">
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Unconventional Diplomatic Breakthroughs</div>
+                            <div class="analysis-description">Trump's willingness to directly engage with North Korea's Kim Jong Un and other adversaries led to unprecedented diplomatic meetings, even if lasting agreements weren't achieved.</div>
+                            <div class="analysis-tag tag-supportive">Diplomatic Innovation</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Direct Communication Style</div>
+                            <div class="analysis-description">Social media and rally communications bypassed traditional media filters, allowing direct communication with supporters and immediate policy announcements.</div>
+                            <div class="analysis-tag tag-supportive">Communication Innovation</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Outsider Perspective Benefits</div>
+                            <div class="analysis-description">Challenging Washington establishment norms and questioning long-standing assumptions sometimes led to fresh approaches to old problems.</div>
+                            <div class="analysis-tag tag-supportive">Norm Challenging</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Criminal Justice Reform</div>
+                            <div class="analysis-description">Surprisingly supported and signed the First Step Act, a bipartisan criminal justice reform bill that reduced sentences and expanded rehabilitation programs.</div>
+                            <div class="analysis-tag tag-supportive">Bipartisan Achievement</div>
+                        </div>
+                    </div>
+
+                    <div id="potpourri-critical" class="perspective-content">
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Federal Reserve Independence Concerns</div>
+                            <div class="analysis-description">Repeated public pressure on Fed Chair Jerome Powell regarding interest rates challenged the traditional independence of monetary policy from political influence.</div>
+                            <div class="analysis-tag tag-critical">Institutional Independence</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Retaliatory Actions Against Critics</div>
+                            <div class="analysis-description">Pattern of targeting former officials like John Bolton and Barack Obama with personal attacks and policy reversals, potentially undermining institutional norms.</div>
+                            <div class="analysis-tag tag-critical">Retaliation Pattern</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Epstein Association Questions</div>
+                            <div class="analysis-description">Historical association with Jeffrey Epstein and related social connections raise questions about judgment and potential compromising relationships.</div>
+                            <div class="analysis-tag tag-critical">Association Concerns</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Pardons for Associates</div>
+                            <div class="analysis-description">Controversial pardons for political allies and associates potentially undermined justice system independence and created appearance of self-serving use of presidential powers.</div>
+                            <div class="analysis-tag tag-critical">Justice System</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Classified Documents Handling</div>
+                            <div class="analysis-description">Post-presidency retention of classified documents at Mar-a-Lago raised serious national security and legal concerns about proper handling of sensitive materials.</div>
+                            <div class="analysis-tag tag-critical">National Security</div>
+                        </div>
+                    </div>
+
+                    <div id="potpourri-contradictions" class="perspective-content">
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Anti-Establishment vs. Elite Connections</div>
+                            <div class="analysis-description">Positioned as an outsider fighting the establishment while maintaining relationships with wealthy elites and controversial figures like Epstein.</div>
+                            <div class="analysis-tag tag-contradiction">Elite Contradiction</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Law and Order vs. Legal Troubles</div>
+                            <div class="analysis-description">Strong "law and order" messaging conflicts with multiple legal investigations, indictments, and challenges to election results and democratic processes.</div>
+                            <div class="analysis-tag tag-contradiction">Legal Inconsistency</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Loyalty Demands vs. Staff Turnover</div>
+                            <div class="analysis-description">Emphasized loyalty from staff and allies while experiencing unprecedented turnover rates and ultimately targeting former supporters who distanced themselves.</div>
+                            <div class="analysis-tag tag-contradiction">Loyalty Paradox</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Institutional Respect vs. Norm Breaking</div>
+                            <div class="analysis-description">Called for respecting institutions while simultaneously attacking the FBI, intelligence agencies, federal judges, and election systems when they opposed him.</div>
+                            <div class="analysis-tag tag-contradiction">Institutional Inconsistency</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sources-section">
+                    <h4>Supporting Sources</h4>
+                    <div class="source-item">
+                        <div class="source-title">Federal Reserve Communications Analysis</div>
+                        <div class="source-description">Documentation of public statements and social media posts targeting Fed policy decisions and leadership during 2017-2021.</div>
+                        <div class="source-meta">Source: Federal Reserve Communications Archives</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">Administration Staff Turnover Records</div>
+                        <div class="source-description">Comprehensive tracking of cabinet and senior staff departures, resignations, and terminations throughout the Trump administration.</div>
+                        <div class="source-meta">Source: Brookings Institution Turnover Tracker</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">Presidential Pardon Documentation</div>
+                        <div class="source-description">Official records of pardons granted, including controversial pardons for political associates and their legal justifications.</div>
+                        <div class="source-meta">Source: Department of Justice Pardon Records</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">Classified Documents Investigation</div>
+                        <div class="source-description">FBI and DOJ documentation regarding classified materials found at Mar-a-Lago and related legal proceedings.</div>
+                        <div class="source-meta">Source: Department of Justice Court Filings</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -916,7 +1043,8 @@
                 'tariffs': 'Trade & Tariffs',
                 'energy': 'Energy Policy',
                 'economy': 'Economic Policy',
-                'foreign': 'Foreign Policy'
+                'foreign': 'Foreign Policy',
+                'potpourri': 'Potpourri'
             };
             return names[category] || category;
         }
