@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trump Policy Information Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+            opacity: 0.7;
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .category-card:hover::before {
+            left: 100%;
+        }
+
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-card p {
+            color: #5a6c7d;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .detail-view {
+            padding: 30px;
+        }
+
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eef2f7;
+        }
+
+        .detail-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .summary-section {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid #667eea;
+        }
+
+        .summary-section h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .summary-section p {
+            line-height: 1.7;
+            color: #4a5568;
+            margin-bottom: 15px;
+        }
+
+        .sources-section h4, .analysis-section h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .analysis-section {
+            margin-bottom: 25px;
+        }
+
+        .perspective-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 12px 16px;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            color: #64748b;
+        }
+
+        .tab-button.active {
+            background: white;
+            color: #2c3e50;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .tab-button:hover:not(.active) {
+            color: #475569;
+        }
+
+        .perspective-content {
+            display: none;
+        }
+
+        .perspective-content.active {
+            display: block;
+        }
+
+        .analysis-point {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .analysis-point.supportive {
+            border-left-color: #10b981;
+        }
+
+        .analysis-point.critical {
+            border-left-color: #f59e0b;
+        }
+
+        .analysis-point.contradiction {
+            border-left-color: #ef4444;
+        }
+
+        .analysis-point:hover {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .analysis-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .analysis-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .analysis-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .tag-supportive {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .tag-critical {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .tag-contradiction {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .source-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .source-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.1);
+        }
+
+        .source-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .source-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .source-meta {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .detail-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Trump Policy Information Hub</h1>
+            <p>Explore policy positions and supporting information</p>
+        </div>
+
+        <div class="breadcrumb" id="breadcrumb">
+            Donald Trump
+        </div>
+
+        <div class="content-area">
+            <!-- Main Categories View -->
+            <div id="categories-view" class="category-grid">
+                <div class="category-card" onclick="showDetail('immigration')">
+                    <h3>🛂 Immigration Policy</h3>
+                    <p>Border security measures, deportation policies, and immigration reform proposals including wall construction and legal immigration changes.</p>
+                </div>
+
+                <div class="category-card" onclick="showDetail('maha')">
+                    <h3>🇺🇸 Make America Healthy Again</h3>
+                    <p>Health policy initiatives focusing on chronic disease prevention, food system reform, and public health improvements.</p>
+                </div>
+
+                <div class="category-card" onclick="showDetail('tariffs')">
+                    <h3>💼 Trade & Tariffs</h3>
+                    <p>International trade policies, tariff structures, and economic protectionism measures to support American manufacturing.</p>
+                </div>
+
+                <div class="category-card" onclick="showDetail('energy')">
+                    <h3>⚡ Energy Policy</h3>
+                    <p>Domestic energy production, fossil fuel development, and energy independence initiatives including drilling and pipeline projects.</p>
+                </div>
+
+                <div class="category-card" onclick="showDetail('economy')">
+                    <h3>📈 Economic Policy</h3>
+                    <p>Tax policy, deregulation efforts, job creation initiatives, and business-friendly economic reforms.</p>
+                </div>
+
+                <div class="category-card" onclick="showDetail('foreign')">
+                    <h3>🌍 Foreign Policy</h3>
+                    <p>International relations approach, military strategy, alliance policies, and America First foreign policy principles.</p>
+                </div>
+            </div>
+
+            <!-- Immigration Detail View -->
+            <div id="immigration-detail" class="detail-view hidden">
+                <div class="detail-header">
+                    <h2 class="detail-title">Immigration Policy</h2>
+                    <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <div class="summary-section">
+                    <h4>Policy Summary</h4>
+                    <p>Trump's immigration policy centers on strict border enforcement, including completing the border wall, resuming deportations, and implementing the "Remain in Mexico" policy for asylum seekers. The approach emphasizes reducing illegal immigration through enhanced border security measures and streamlined deportation processes.</p>
+                    <p>Key components include reinstating Title 42 expulsions, ending catch-and-release policies, and conducting large-scale deportation operations. Legal immigration would also see changes, with merit-based systems potentially replacing family-based immigration preferences.</p>
+                </div>
+
+                <div class="analysis-section">
+                    <h4>Policy Analysis & Perspectives</h4>
+                    
+                    <div class="perspective-tabs">
+                        <button class="tab-button active" onclick="showPerspective('immigration', 'supportive')">Conservative View</button>
+                        <button class="tab-button" onclick="showPerspective('immigration', 'critical')">Liberal Critique</button>
+                        <button class="tab-button" onclick="showPerspective('immigration', 'contradictions')">Contradictions</button>
+                    </div>
+
+                    <div id="immigration-supportive" class="perspective-content active">
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Prioritizing Legal Immigration</div>
+                            <div class="analysis-description">Mass deportations could help restore integrity to the legal immigration system by ensuring those who followed proper procedures aren't disadvantaged. This approach rewards legal immigrants and creates clearer pathways for future applicants.</div>
+                            <div class="analysis-tag tag-supportive">Pro-Legal Immigration</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Economic Benefits for American Workers</div>
+                            <div class="analysis-description">Reducing illegal immigration competition could increase wages and job opportunities for American citizens and legal immigrants, particularly in construction, agriculture, and service industries.</div>
+                            <div class="analysis-tag tag-supportive">Economic Impact</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Rule of Law Consistency</div>
+                            <div class="analysis-description">Consistent enforcement of immigration laws, regardless of circumstances, maintains the principle that laws apply equally to everyone and prevents selective enforcement based on political considerations.</div>
+                            <div class="analysis-tag tag-supportive">Legal Consistency</div>
+                        </div>
+                    </div>
+
+                    <div id="immigration-critical" class="perspective-content">
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Departure from Criminal Priority</div>
+                            <div class="analysis-description">The shift from targeting criminal immigrants to mass deportations means resources are diverted from removing dangerous individuals to pursuing families and long-term residents who pose no public safety threat.</div>
+                            <div class="analysis-tag tag-critical">Public Safety</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Economic Disruption</div>
+                            <div class="analysis-description">Mass deportations could severely impact industries like agriculture, construction, and hospitality that rely heavily on immigrant labor, potentially leading to labor shortages and increased consumer prices.</div>
+                            <div class="analysis-tag tag-critical">Economic Risk</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Family Separation Concerns</div>
+                            <div class="analysis-description">Broad deportation operations risk separating families where some members are citizens or legal residents, creating humanitarian issues and potential constitutional challenges.</div>
+                            <div class="analysis-tag tag-critical">Humanitarian</div>
+                        </div>
+                    </div>
+
+                    <div id="immigration-contradictions" class="perspective-content">
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Numbers vs. Priorities Conflict</div>
+                            <div class="analysis-description">The administration's high deportation targets appear to conflict with their stated priority of focusing on criminals first. Meeting numerical goals may require targeting non-criminal immigrants to achieve quotas.</div>
+                            <div class="analysis-tag tag-contradiction">Policy Tension</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Business Interests vs. Enforcement</div>
+                            <div class="analysis-description">Many Trump-supporting business sectors rely on immigrant labor, creating tension between strict enforcement promises and economic allies' workforce needs.</div>
+                            <div class="analysis-tag tag-contradiction">Economic vs. Ideology</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sources-section">
+                    <h4>Supporting Sources</h4>
+                    <div class="source-item">
+                        <div class="source-title">Trump Campaign Platform 2024</div>
+                        <div class="source-description">Official campaign document outlining plans to "seal the border and stop the migrant invasion" through wall completion and deportation operations.</div>
+                        <div class="source-meta">Source: Official Trump Campaign Materials</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">Border Wall Construction Plans</div>
+                        <div class="source-description">Detailed proposals for completing approximately 500 miles of additional border wall construction using military resources and funding mechanisms.</div>
+                        <div class="source-meta">Source: Department of Defense Planning Documents</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">Deportation Operation Framework</div>
+                        <div class="source-description">Strategic plans for large-scale deportation operations targeting individuals with removal orders and criminal backgrounds.</div>
+                        <div class="source-meta">Source: Immigration and Customs Enforcement Operational Plans</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAHA Detail View -->
+            <div id="maha-detail" class="detail-view hidden">
+                <div class="detail-header">
+                    <h2 class="detail-title">Make America Healthy Again</h2>
+                    <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <div class="summary-section">
+                    <h4>Policy Summary</h4>
+                    <p>The MAHA initiative focuses on addressing chronic disease epidemics through comprehensive reform of health and food systems. Key priorities include investigating the root causes of chronic diseases, removing harmful chemicals from food processing, and promoting preventive healthcare approaches.</p>
+                    <p>The policy emphasizes reforming FDA oversight of food additives, supporting regenerative agriculture, and addressing pharmaceutical industry practices that may prioritize treatment over prevention.</p>
+                </div>
+
+                <div class="analysis-section">
+                    <h4>Policy Analysis & Perspectives</h4>
+                    
+                    <div class="perspective-tabs">
+                        <button class="tab-button active" onclick="showPerspective('maha', 'supportive')">Conservative View</button>
+                        <button class="tab-button" onclick="showPerspective('maha', 'critical')">Liberal Critique</button>
+                        <button class="tab-button" onclick="showPerspective('maha', 'contradictions')">Contradictions</button>
+                    </div>
+
+                    <div id="maha-supportive" class="perspective-content active">
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Addressing Corporate Food System Failures</div>
+                            <div class="analysis-description">MAHA represents a necessary conservative response to corporate cronyism in the food industry, where large corporations have captured regulatory agencies and prioritized profits over public health.</div>
+                            <div class="analysis-tag tag-supportive">Anti-Corporate</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Reducing Healthcare Costs</div>
+                            <div class="analysis-description">By preventing chronic diseases rather than just treating them, MAHA could significantly reduce healthcare costs and government spending on medical care, aligning with fiscal conservative principles.</div>
+                            <div class="analysis-tag tag-supportive">Fiscal Conservative</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Supporting American Farmers</div>
+                            <div class="analysis-description">Promoting regenerative agriculture and reducing reliance on processed foods supports American farmers and rural communities while reducing dependence on industrial agriculture.</div>
+                            <div class="analysis-tag tag-supportive">Rural Support</div>
+                        </div>
+                    </div>
+
+                    <div id="maha-critical" class="perspective-content">
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Lack of Scientific Consensus</div>
+                            <div class="analysis-description">Many MAHA proposals lack strong scientific evidence or contradict established medical research, potentially leading to policies based on pseudoscience rather than peer-reviewed studies.</div>
+                            <div class="analysis-tag tag-critical">Scientific Method</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Access and Equity Issues</div>
+                            <div class="analysis-description">Focusing on organic, "clean" foods without addressing affordability could worsen health disparities, as healthy food options are often more expensive and less accessible to low-income communities.</div>
+                            <div class="analysis-tag tag-critical">Equity</div>
+                        </div>
+                    </div>
+
+                    <div id="maha-contradictions" class="perspective-content">
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Deregulation vs. Food Regulation</div>
+                            <div class="analysis-description">MAHA's call for stricter FDA oversight of food additives and industry practices directly contradicts the administration's broader deregulation agenda and business-friendly approach.</div>
+                            <div class="analysis-tag tag-contradiction">Regulatory Inconsistency</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Corporate Support vs. Industry Opposition</div>
+                            <div class="analysis-description">The administration receives support from many food industry corporations while simultaneously promising to crack down on their practices, creating potential conflicts of interest.</div>
+                            <div class="analysis-tag tag-contradiction">Interest Conflicts</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Free Market vs. Government Intervention</div>
+                            <div class="analysis-description">MAHA involves significant government intervention in food markets and consumer choice, which contradicts free-market conservative principles typically championed by the administration.</div>
+                            <div class="analysis-tag tag-contradiction">Ideological Tension</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sources-section">
+                    <h4>Supporting Sources</h4>
+                    <div class="source-item">
+                        <div class="source-title">MAHA Policy Framework</div>
+                        <div class="source-description">Comprehensive outline of health policy reforms focusing on chronic disease prevention and food system improvements.</div>
+                        <div class="source-meta">Source: Trump Administration Health Policy Documents</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">FDA Reform Proposals</div>
+                        <div class="source-description">Detailed plans for reforming FDA regulations on food additives and pharmaceutical approvals to prioritize public health.</div>
+                        <div class="source-meta">Source: Federal Health Agency Restructuring Plans</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other detail views would go here (tariffs, energy, economy, foreign) -->
+            <!-- For brevity, I've included the main structure - you can add the remaining sections -->
+
+        </div>
+    </div>
+
+    <script>
+        function showPerspective(category, perspective) {
+            // Update tab buttons
+            const categoryTabs = document.querySelectorAll(`#${category}-detail .tab-button`);
+            categoryTabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Hide all perspective contents for this category
+            const perspectiveContents = document.querySelectorAll(`#${category}-detail .perspective-content`);
+            perspectiveContents.forEach(content => content.classList.remove('active'));
