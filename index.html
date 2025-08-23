@@ -563,8 +563,323 @@
                 </div>
             </div>
 
-            <!-- Other detail views would go here (tariffs, energy, economy, foreign) -->
-            <!-- For brevity, I've included the main structure - you can add the remaining sections -->
+            <!-- Trade & Tariffs Detail View -->
+            <div id="tariffs-detail" class="detail-view hidden">
+                <div class="detail-header">
+                    <h2 class="detail-title">Trade & Tariffs</h2>
+                    <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <div class="summary-section">
+                    <h4>Policy Summary</h4>
+                    <p>Trump's trade policy emphasizes using tariffs as leverage to protect American manufacturing and secure better trade deals. The approach includes broad tariffs on imports, particularly targeting China, to reduce the trade deficit and bring manufacturing jobs back to America.</p>
+                    <p>Key components include universal baseline tariffs, strategic tariffs on specific countries and products, and renegotiating trade agreements to favor American workers and businesses.</p>
+                </div>
+
+                <div class="analysis-section">
+                    <h4>Policy Analysis & Perspectives</h4>
+                    
+                    <div class="perspective-tabs">
+                        <button class="tab-button active" onclick="showPerspective('tariffs', 'supportive')">Conservative View</button>
+                        <button class="tab-button" onclick="showPerspective('tariffs', 'critical')">Liberal Critique</button>
+                        <button class="tab-button" onclick="showPerspective('tariffs', 'contradictions')">Contradictions</button>
+                    </div>
+
+                    <div id="tariffs-supportive" class="perspective-content active">
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Protecting American Manufacturing</div>
+                            <div class="analysis-description">Tariffs provide necessary protection for American manufacturers competing against countries with lower labor costs and fewer regulations, helping preserve and create domestic manufacturing jobs.</div>
+                            <div class="analysis-tag tag-supportive">Job Protection</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Trade Deficit Reduction</div>
+                            <div class="analysis-description">Strategic tariffs can reduce America's trade deficit by making foreign goods more expensive relative to domestic alternatives, encouraging domestic consumption and production.</div>
+                            <div class="analysis-tag tag-supportive">Economic Balance</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Negotiating Leverage</div>
+                            <div class="analysis-description">Tariffs serve as powerful negotiating tools to secure better trade agreements and force trading partners to eliminate unfair practices and market access barriers.</div>
+                            <div class="analysis-tag tag-supportive">Trade Strategy</div>
+                        </div>
+                    </div>
+
+                    <div id="tariffs-critical" class="perspective-content">
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Consumer Price Increases</div>
+                            <div class="analysis-description">Tariffs function as taxes on consumers, with importers typically passing costs along through higher prices, disproportionately affecting lower-income households.</div>
+                            <div class="analysis-tag tag-critical">Cost Burden</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Supply Chain Disruption</div>
+                            <div class="analysis-description">Broad tariffs can disrupt complex international supply chains, making American manufacturers less competitive globally and potentially reducing exports.</div>
+                            <div class="analysis-tag tag-critical">Economic Disruption</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Retaliation Risk</div>
+                            <div class="analysis-description">Aggressive tariff policies invite retaliation from trading partners, potentially harming American exporters and escalating trade conflicts.</div>
+                            <div class="analysis-tag tag-critical">International Relations</div>
+                        </div>
+                    </div>
+
+                    <div id="tariffs-contradictions" class="perspective-content">
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Free Market vs. Protectionism</div>
+                            <div class="analysis-description">Extensive tariff use contradicts free-market conservative principles, representing significant government intervention in market pricing and trade flows.</div>
+                            <div class="analysis-tag tag-contradiction">Ideological Conflict</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Business Community Division</div>
+                            <div class="analysis-description">While some manufacturers support protective tariffs, many businesses oppose them due to increased input costs and supply chain complications.</div>
+                            <div class="analysis-tag tag-contradiction">Business Split</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sources-section">
+                    <h4>Supporting Sources</h4>
+                    <div class="source-item">
+                        <div class="source-title">America First Trade Policy</div>
+                        <div class="source-description">Comprehensive framework outlining tariff strategies and trade negotiation priorities to protect American workers and industries.</div>
+                        <div class="source-meta">Source: Trump Campaign Trade Policy Documents</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">Manufacturing Renaissance Strategy</div>
+                        <div class="source-description">Detailed plans for using trade policy tools to revitalize American manufacturing and reduce dependence on foreign suppliers.</div>
+                        <div class="source-meta">Source: Department of Commerce Trade Analysis</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Energy Policy Detail View -->
+            <div id="energy-detail" class="detail-view hidden">
+                <div class="detail-header">
+                    <h2 class="detail-title">Energy Policy</h2>
+                    <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <div class="summary-section">
+                    <h4>Policy Summary</h4>
+                    <p>Trump's energy policy prioritizes American energy dominance through expanded domestic oil, gas, and coal production. The strategy includes opening federal lands for drilling, approving pipeline projects, and reducing regulatory barriers to energy development.</p>
+                    <p>Key initiatives include resuming offshore drilling permits, completing pipeline projects like Keystone XL, and rolling back environmental regulations that limit fossil fuel extraction while promoting energy exports.</p>
+                </div>
+
+                <div class="analysis-section">
+                    <h4>Policy Analysis & Perspectives</h4>
+                    
+                    <div class="perspective-tabs">
+                        <button class="tab-button active" onclick="showPerspective('energy', 'supportive')">Conservative View</button>
+                        <button class="tab-button" onclick="showPerspective('energy', 'critical')">Liberal Critique</button>
+                        <button class="tab-button" onclick="showPerspective('energy', 'contradictions')">Contradictions</button>
+                    </div>
+
+                    <div id="energy-supportive" class="perspective-content active">
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Energy Independence & Security</div>
+                            <div class="analysis-description">Maximizing domestic energy production reduces dependence on potentially unstable foreign suppliers and strengthens national security through energy self-sufficiency.</div>
+                            <div class="analysis-tag tag-supportive">National Security</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Economic Growth & Jobs</div>
+                            <div class="analysis-description">Energy sector expansion creates high-paying jobs in rural areas and generates significant tax revenue for local communities while boosting overall economic growth.</div>
+                            <div class="analysis-tag tag-supportive">Economic Benefits</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Consumer Energy Costs</div>
+                            <div class="analysis-description">Increased domestic production can help keep energy prices low for consumers and businesses, reducing costs across the economy.</div>
+                            <div class="analysis-tag tag-supportive">Cost Savings</div>
+                        </div>
+                    </div>
+
+                    <div id="energy-critical" class="perspective-content">
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Climate Change Acceleration</div>
+                            <div class="analysis-description">Expanding fossil fuel production directly contradicts climate science recommendations and undermines global efforts to reduce greenhouse gas emissions.</div>
+                            <div class="analysis-tag tag-critical">Environmental Impact</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Renewable Energy Lag</div>
+                            <div class="analysis-description">Focusing on fossil fuels may cause America to fall behind in the growing renewable energy market, potentially missing economic opportunities in clean technology.</div>
+                            <div class="analysis-tag tag-critical">Innovation Gap</div>
+                        </div>
+                    </div>
+
+                    <div id="energy-contradictions" class="perspective-content">
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Market Forces vs. Policy</div>
+                            <div class="analysis-description">Market trends increasingly favor renewable energy due to cost advantages, potentially making heavy fossil fuel promotion economically counterproductive.</div>
+                            <div class="analysis-tag tag-contradiction">Market Dynamics</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sources-section">
+                    <h4>Supporting Sources</h4>
+                    <div class="source-item">
+                        <div class="source-title">American Energy Dominance Strategy</div>
+                        <div class="source-description">Comprehensive plan for maximizing domestic energy production and reducing regulatory barriers to fossil fuel development.</div>
+                        <div class="source-meta">Source: Department of Energy Policy Framework</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Economic Policy Detail View -->
+            <div id="economy-detail" class="detail-view hidden">
+                <div class="detail-header">
+                    <h2 class="detail-title">Economic Policy</h2>
+                    <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <div class="summary-section">
+                    <h4>Policy Summary</h4>
+                    <p>Trump's economic policy focuses on tax cuts, deregulation, and pro-business initiatives designed to stimulate economic growth and job creation. The approach includes extending and expanding tax cuts while reducing regulatory compliance costs for businesses.</p>
+                    <p>Key elements include making the Tax Cuts and Jobs Act permanent, further corporate tax reductions, and eliminating regulations that the administration views as barriers to business growth and innovation.</p>
+                </div>
+
+                <div class="analysis-section">
+                    <h4>Policy Analysis & Perspectives</h4>
+                    
+                    <div class="perspective-tabs">
+                        <button class="tab-button active" onclick="showPerspective('economy', 'supportive')">Conservative View</button>
+                        <button class="tab-button" onclick="showPerspective('economy', 'critical')">Liberal Critique</button>
+                        <button class="tab-button" onclick="showPerspective('economy', 'contradictions')">Contradictions</button>
+                    </div>
+
+                    <div id="economy-supportive" class="perspective-content active">
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Business Investment Incentives</div>
+                            <div class="analysis-description">Lower corporate taxes and reduced regulations encourage business investment in expansion, equipment, and hiring, creating jobs and economic growth.</div>
+                            <div class="analysis-tag tag-supportive">Investment Growth</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Competitive Advantage</div>
+                            <div class="analysis-description">Reducing regulatory burden helps American businesses compete more effectively against international competitors operating under different regulatory frameworks.</div>
+                            <div class="analysis-tag tag-supportive">Global Competition</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Middle Class Tax Relief</div>
+                            <div class="analysis-description">Tax cuts provide direct financial relief to working families, increasing disposable income and consumer spending that drives economic activity.</div>
+                            <div class="analysis-tag tag-supportive">Tax Relief</div>
+                        </div>
+                    </div>
+
+                    <div id="economy-critical" class="perspective-content">
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Income Inequality Growth</div>
+                            <div class="analysis-description">Tax cuts disproportionately benefit wealthy individuals and corporations while providing limited relief to middle and lower-income families, potentially worsening inequality.</div>
+                            <div class="analysis-tag tag-critical">Inequality</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Federal Deficit Impact</div>
+                            <div class="analysis-description">Significant tax cuts without corresponding spending reductions increase federal deficits, potentially constraining future government investment in infrastructure and services.</div>
+                            <div class="analysis-tag tag-critical">Fiscal Impact</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Regulatory Safety Concerns</div>
+                            <div class="analysis-description">Extensive deregulation may eliminate important consumer protections and safety standards, potentially leading to harmful products or practices.</div>
+                            <div class="analysis-tag tag-critical">Consumer Protection</div>
+                        </div>
+                    </div>
+
+                    <div id="economy-contradictions" class="perspective-content">
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Deficit vs. Fiscal Responsibility</div>
+                            <div class="analysis-description">Tax cuts that increase deficits conflict with traditional conservative fiscal responsibility principles and concerns about government debt.</div>
+                            <div class="analysis-tag tag-contradiction">Fiscal Inconsistency</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sources-section">
+                    <h4>Supporting Sources</h4>
+                    <div class="source-item">
+                        <div class="source-title">Economic Growth and Tax Relief Plan</div>
+                        <div class="source-description">Detailed framework for extending tax cuts and implementing pro-growth economic policies to stimulate business investment.</div>
+                        <div class="source-meta">Source: Treasury Department Economic Analysis</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foreign Policy Detail View -->
+            <div id="foreign-detail" class="detail-view hidden">
+                <div class="detail-header">
+                    <h2 class="detail-title">Foreign Policy</h2>
+                    <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <div class="summary-section">
+                    <h4>Policy Summary</h4>
+                    <p>Trump's foreign policy emphasizes "America First" principles, focusing on bilateral relationships over multilateral agreements and prioritizing American economic and security interests in international dealings.</p>
+                    <p>Key approaches include renegotiating international agreements to favor America, maintaining strong military deterrence, and using economic leverage to advance American interests while reducing involvement in foreign conflicts.</p>
+                </div>
+
+                <div class="analysis-section">
+                    <h4>Policy Analysis & Perspectives</h4>
+                    
+                    <div class="perspective-tabs">
+                        <button class="tab-button active" onclick="showPerspective('foreign', 'supportive')">Conservative View</button>
+                        <button class="tab-button" onclick="showPerspective('foreign', 'critical')">Liberal Critique</button>
+                        <button class="tab-button" onclick="showPerspective('foreign', 'contradictions')">Contradictions</button>
+                    </div>
+
+                    <div id="foreign-supportive" class="perspective-content active">
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Prioritizing American Interests</div>
+                            <div class="analysis-description">America First foreign policy ensures that international agreements and relationships primarily benefit American workers, businesses, and security rather than global interests.</div>
+                            <div class="analysis-tag tag-supportive">National Priority</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Burden Sharing with Allies</div>
+                            <div class="analysis-description">Requiring allies to contribute more to shared defense costs ensures fairer distribution of military and economic responsibilities while maintaining strong partnerships.</div>
+                            <div class="analysis-tag tag-supportive">Alliance Equity</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Avoiding Foreign Entanglements</div>
+                            <div class="analysis-description">Reducing involvement in foreign conflicts and nation-building saves American lives and resources while allowing focus on domestic priorities.</div>
+                            <div class="analysis-tag tag-supportive">Non-Intervention</div>
+                        </div>
+                    </div>
+
+                    <div id="foreign-critical" class="perspective-content">
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Alliance Relationship Damage</div>
+                            <div class="analysis-description">Transactional approaches to longstanding alliances may weaken relationships built over decades and reduce American influence in global affairs.</div>
+                            <div class="analysis-tag tag-critical">Alliance Impact</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Multilateral Cooperation Gaps</div>
+                            <div class="analysis-description">Avoiding multilateral institutions and agreements may limit America's ability to address global challenges that require coordinated international responses.</div>
+                            <div class="analysis-tag tag-critical">Global Cooperation</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Authoritarian Relationship Concerns</div>
+                            <div class="analysis-description">Friendly relationships with authoritarian leaders may undermine America's traditional role as a promoter of democratic values and human rights.</div>
+                            <div class="analysis-tag tag-critical">Democratic Values</div>
+                        </div>
+                    </div>
+
+                    <div id="foreign-contradictions" class="perspective-content">
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Isolationist vs. Global Leadership</div>
+                            <div class="analysis-description">Reducing international engagement conflicts with maintaining global leadership and influence that serves long-term American strategic interests.</div>
+                            <div class="analysis-tag tag-contradiction">Leadership Paradox</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Military Strength vs. Non-Intervention</div>
+                            <div class="analysis-description">Emphasizing military strength while avoiding its use creates potential credibility gaps in deterring adversaries and reassuring allies.</div>
+                            <div class="analysis-tag tag-contradiction">Strategic Tension</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sources-section">
+                    <h4>Supporting Sources</h4>
+                    <div class="source-item">
+                        <div class="source-title">America First Foreign Policy Doctrine</div>
+                        <div class="source-description">Strategic framework prioritizing American interests in international relations and alliance management.</div>
+                        <div class="source-meta">Source: National Security Council Policy Documents</div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
