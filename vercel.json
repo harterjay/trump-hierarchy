@@ -23,5 +23,11 @@
         }
       ]
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron-update",
+      "schedule": "0 9 * * 0"
+    }
   ]
 }
