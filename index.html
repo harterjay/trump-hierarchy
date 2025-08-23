@@ -570,6 +570,42 @@
     </div>
 
     <script>
+        function showDetail(category) {
+            // Hide categories view
+            document.getElementById('categories-view').classList.add('hidden');
+            
+            // Show specific detail view
+            document.getElementById(category + '-detail').classList.remove('hidden');
+            
+            // Update breadcrumb
+            const breadcrumb = document.getElementById('breadcrumb');
+            breadcrumb.innerHTML = `Donald Trump <span>></span> ${getCategoryName(category)}`;
+        }
+        
+        function showCategories() {
+            // Hide all detail views
+            const detailViews = document.querySelectorAll('.detail-view');
+            detailViews.forEach(view => view.classList.add('hidden'));
+            
+            // Show categories view
+            document.getElementById('categories-view').classList.remove('hidden');
+            
+            // Reset breadcrumb
+            document.getElementById('breadcrumb').innerHTML = 'Donald Trump';
+        }
+        
+        function getCategoryName(category) {
+            const names = {
+                'immigration': 'Immigration Policy',
+                'maha': 'Make America Healthy Again',
+                'tariffs': 'Trade & Tariffs',
+                'energy': 'Energy Policy',
+                'economy': 'Economic Policy',
+                'foreign': 'Foreign Policy'
+            };
+            return names[category] || category;
+        }
+
         function showPerspective(category, perspective) {
             // Update tab buttons
             const categoryTabs = document.querySelectorAll(`#${category}-detail .tab-button`);
@@ -579,3 +615,10 @@
             // Hide all perspective contents for this category
             const perspectiveContents = document.querySelectorAll(`#${category}-detail .perspective-content`);
             perspectiveContents.forEach(content => content.classList.remove('active'));
+            
+            // Show selected perspective content
+            document.getElementById(`${category}-${perspective}`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
