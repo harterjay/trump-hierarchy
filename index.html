@@ -130,13 +130,30 @@
         .scale-line {
             position: absolute;
             bottom: 5px;
-            left: 10%;
-            right: 10%;
+            left: 12%;
+            right: 12%;
             height: 6px;
             background: #4a90e2;
             border-radius: 3px;
             box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
             z-index: 1;
+        }
+
+        .political-icon {
+            position: absolute;
+            bottom: 0;
+            font-size: 24px;
+            z-index: 1;
+        }
+
+        .icon-left {
+            left: 8%;
+            transform: translateX(-50%);
+        }
+
+        .icon-right {
+            right: 8%;
+            transform: translateX(50%);
         }
 
         .scale-line::before {
@@ -578,7 +595,9 @@
                     "Worst President in history!"
                 </div>
                 <div class="scale-line"></div>
+                <div class="political-icon icon-left">🫏</div>
                 <div class="scale-marker"></div>
+                <div class="political-icon icon-right">🐘</div>
                 <div class="scale-extreme scale-right">
                     "Greatest President ever!"
                 </div>
@@ -641,7 +660,9 @@
                                 "We're tearing families apart!"
                             </div>
                             <div class="scale-line"></div>
+                            <div class="political-icon icon-left">🫏</div>
                             <div class="scale-marker"></div>
+                            <div class="political-icon icon-right">🐘</div>
                             <div class="scale-extreme scale-right">
                                 "They broke the law coming here!"
                             </div>
