@@ -75,9 +75,9 @@
         .breadcrumb {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 15px 20px;
+            padding: 10px 20px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: white;
             font-weight: 500;
         }
@@ -137,13 +137,13 @@
             align-items: center;
             justify-content: space-between;
             position: relative;
-            height: 80px;
+            height: 90px;
             margin: 10px 0;
         }
 
         .scale-line {
             position: absolute;
-            bottom: 15px;
+            bottom: 5px;
             left: 10%;
             right: 10%;
             height: 6px;
@@ -166,7 +166,7 @@
 
         .scale-marker {
             position: absolute;
-            bottom: 12px;
+            bottom: 2px;
             left: 50%;
             width: 20px;
             height: 20px;
@@ -340,7 +340,11 @@
         }
 
         .detail-view {
-            padding: 30px;
+            padding: 0;
+        }
+
+        .detail-content {
+            padding: 20px 30px;
         }
 
         .detail-header {
@@ -645,23 +649,24 @@
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
                 </div>
 
-                <!-- Immigration Scale -->
-                <div class="political-scale">
-                    <div class="scale-title">Immigration Policy Spectrum</div>
-                    <div class="scale-container">
-                        <div class="scale-extreme scale-left">
-                            "We're tearing families apart!"
+                <div class="detail-content">
+                    <!-- Immigration Scale -->
+                    <div class="political-scale">
+                        <div class="scale-title">Immigration Policy Spectrum</div>
+                        <div class="scale-container">
+                            <div class="scale-extreme scale-left">
+                                "We're tearing families apart!"
+                            </div>
+                            <div class="scale-line"></div>
+                            <div class="scale-marker"></div>
+                            <div class="scale-extreme scale-right">
+                                "They broke the law coming here!"
+                            </div>
                         </div>
-                        <div class="scale-line"></div>
-                        <div class="scale-marker"></div>
-                        <div class="scale-extreme scale-right">
-                            "They broke the law coming here!"
-                        </div>
+                        <div class="scale-truth-note">Balanced immigration policy lies between these extremes...</div>
                     </div>
-                    <div class="scale-truth-note">Balanced immigration policy lies between these extremes...</div>
-                </div>
 
-                <div class="summary-section">
+                    <div class="summary-section">
                     <h4>Policy Summary</h4>
                     <p>Trump's immigration policy centers on strict border enforcement, including completing the border wall, resuming deportations, and implementing the "Remain in Mexico" policy for asylum seekers. The approach emphasizes reducing illegal immigration through enhanced border security measures and streamlined deportation processes.</p>
                     <p>Key components include reinstating Title 42 expulsions, ending catch-and-release policies, and conducting large-scale deportation operations. Legal immigration would also see changes, with merit-based systems potentially replacing family-based immigration preferences.</p>
@@ -743,6 +748,7 @@
                         <div class="source-description">Strategic plans for large-scale deportation operations targeting individuals with removal orders and criminal backgrounds.</div>
                         <div class="source-meta">Source: Immigration and Customs Enforcement Operational Plans</div>
                     </div>
+                </div>
                 </div>
             </div>
 
