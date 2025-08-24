@@ -71,6 +71,25 @@
             padding: 30px;
         }
 
+        .potpourri-card {
+            grid-column: 1 / -1;
+            max-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .potpourri-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .potpourri-card p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
         .category-card {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             padding: 25px;
@@ -386,9 +405,9 @@
                     <p>International relations approach, military strategy, alliance policies, and America First foreign policy principles.</p>
                 </div>
 
-                <div class="category-card" onclick="showDetail('potpourri')">
+                <div class="category-card potpourri-card" onclick="showDetail('potpourri')">
                     <h3>🎭 Potpourri</h3>
-                    <p>Unconventional actions, personal vendettas, controversies, and surprising moves that don't fit traditional policy categories.</p>
+                    <p>Unconventional actions, controversies, and surprising moves.</p>
                 </div>
             </div>
 
