@@ -90,6 +90,95 @@
             font-size: 1rem;
         }
 
+        /* Political Scale Styles */
+        .political-scale {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scale-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            height: 60px;
+        }
+
+        .scale-line {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: linear-gradient(to right, #ef4444, #f59e0b, #10b981, #f59e0b, #ef4444);
+            border-radius: 2px;
+            transform: translateY(-50%);
+        }
+
+        .scale-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2); }
+            50% { box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4); }
+            100% { box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2); }
+        }
+
+        .scale-extreme {
+            flex: 1;
+            text-align: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .scale-left {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .scale-right {
+            text-align: right;
+            padding-right: 20px;
+        }
+
+        .scale-title {
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .scale-truth-note {
+            text-align: center;
+            color: white;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
         .category-card {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             padding: 25px;
@@ -372,6 +461,22 @@
             Donald Trump
         </div>
 
+        <!-- Political Scale - Main Page -->
+        <div class="political-scale" id="main-scale">
+            <div class="scale-title">The Political Spectrum</div>
+            <div class="scale-container">
+                <div class="scale-extreme scale-left">
+                    Worst President Ever! 😡
+                </div>
+                <div class="scale-line"></div>
+                <div class="scale-marker"></div>
+                <div class="scale-extreme scale-right">
+                    Best President Ever! 🍾
+                </div>
+            </div>
+            <div class="scale-truth-note">The truth is probably somewhere in the middle...</div>
+        </div>
+
         <div class="content-area">
             <!-- Main Categories View -->
             <div id="categories-view" class="category-grid">
@@ -416,6 +521,22 @@
                 <div class="detail-header">
                     <h2 class="detail-title">Immigration Policy</h2>
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <!-- Immigration Scale -->
+                <div class="political-scale">
+                    <div class="scale-title">Immigration Policy Spectrum</div>
+                    <div class="scale-container">
+                        <div class="scale-extreme scale-left">
+                            Open all borders! 🌍
+                        </div>
+                        <div class="scale-line"></div>
+                        <div class="scale-marker"></div>
+                        <div class="scale-extreme scale-right">
+                            Zero immigration! 🚫
+                        </div>
+                    </div>
+                    <div class="scale-truth-note">Balanced immigration policy lies between these extremes...</div>
                 </div>
 
                 <div class="summary-section">
@@ -510,6 +631,22 @@
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
                 </div>
 
+                <!-- MAHA Scale -->
+                <div class="political-scale">
+                    <div class="scale-title">Health Policy Spectrum</div>
+                    <div class="scale-container">
+                        <div class="scale-extreme scale-left">
+                            Government-run healthcare! 🏥
+                        </div>
+                        <div class="scale-line"></div>
+                        <div class="scale-marker"></div>
+                        <div class="scale-extreme scale-right">
+                            Zero health regulations! 🍔
+                        </div>
+                    </div>
+                    <div class="scale-truth-note">Effective health policy balances freedom and protection...</div>
+                </div>
+
                 <div class="summary-section">
                     <h4>Policy Summary</h4>
                     <p>The MAHA initiative focuses on addressing chronic disease epidemics through comprehensive reform of health and food systems. Key priorities include investigating the root causes of chronic diseases, removing harmful chemicals from food processing, and promoting preventive healthcare approaches.</p>
@@ -595,6 +732,22 @@
                 <div class="detail-header">
                     <h2 class="detail-title">Trade & Tariffs</h2>
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <!-- Tariffs Scale -->
+                <div class="political-scale">
+                    <div class="scale-title">Trade Policy Spectrum</div>
+                    <div class="scale-container">
+                        <div class="scale-extreme scale-left">
+                            Free trade everything! 🌐
+                        </div>
+                        <div class="scale-line"></div>
+                        <div class="scale-marker"></div>
+                        <div class="scale-extreme scale-right">
+                            Tariff everything! 🛡️
+                        </div>
+                    </div>
+                    <div class="scale-truth-note">Smart trade policy uses targeted approaches...</div>
                 </div>
 
                 <div class="summary-section">
@@ -684,6 +837,22 @@
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
                 </div>
 
+                <!-- Energy Scale -->
+                <div class="political-scale">
+                    <div class="scale-title">Energy Policy Spectrum</div>
+                    <div class="scale-container">
+                        <div class="scale-extreme scale-left">
+                            100% renewable now! 🌱
+                        </div>
+                        <div class="scale-line"></div>
+                        <div class="scale-marker"></div>
+                        <div class="scale-extreme scale-right">
+                            Drill baby drill! ⛽
+                        </div>
+                    </div>
+                    <div class="scale-truth-note">Energy independence requires a balanced approach...</div>
+                </div>
+
                 <div class="summary-section">
                     <h4>Policy Summary</h4>
                     <p>Trump's energy policy prioritizes American energy dominance through expanded domestic oil, gas, and coal production. The strategy includes opening federal lands for drilling, approving pipeline projects, and reducing regulatory barriers to energy development.</p>
@@ -754,6 +923,22 @@
                 <div class="detail-header">
                     <h2 class="detail-title">Economic Policy</h2>
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <!-- Economy Scale -->
+                <div class="political-scale">
+                    <div class="scale-title">Economic Policy Spectrum</div>
+                    <div class="scale-container">
+                        <div class="scale-extreme scale-left">
+                            Tax the rich 90%! 💰
+                        </div>
+                        <div class="scale-line"></div>
+                        <div class="scale-marker"></div>
+                        <div class="scale-extreme scale-right">
+                            Zero taxes for all! 🚫💸
+                        </div>
+                    </div>
+                    <div class="scale-truth-note">Sustainable economics balances growth and equity...</div>
                 </div>
 
                 <div class="summary-section">
@@ -831,6 +1016,22 @@
                 <div class="detail-header">
                     <h2 class="detail-title">Foreign Policy</h2>
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <!-- Foreign Policy Scale -->
+                <div class="political-scale">
+                    <div class="scale-title">Foreign Policy Spectrum</div>
+                    <div class="scale-container">
+                        <div class="scale-extreme scale-left">
+                            World police everywhere! 🌍🚓
+                        </div>
+                        <div class="scale-line"></div>
+                        <div class="scale-marker"></div>
+                        <div class="scale-extreme scale-right">
+                            Total isolationism! 🏠
+                        </div>
+                    </div>
+                    <div class="scale-truth-note">Effective diplomacy requires strategic engagement...</div>
                 </div>
 
                 <div class="summary-section">
@@ -913,6 +1114,22 @@
                 <div class="detail-header">
                     <h2 class="detail-title">Potpourri</h2>
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                </div>
+
+                <!-- Potpourri Scale -->
+                <div class="political-scale">
+                    <div class="scale-title">Presidential Behavior Spectrum</div>
+                    <div class="scale-container">
+                        <div class="scale-extreme scale-left">
+                            Every action is evil! 👹
+                        </div>
+                        <div class="scale-line"></div>
+                        <div class="scale-marker"></div>
+                        <div class="scale-extreme scale-right">
+                            Everything is genius! 🧠
+                        </div>
+                    </div>
+                    <div class="scale-truth-note">Complex leaders have both strengths and flaws...</div>
                 </div>
 
                 <div class="summary-section">
@@ -1035,8 +1252,9 @@
 
     <script>
         function showDetail(category) {
-            // Hide categories view
+            // Hide categories view and main scale
             document.getElementById('categories-view').classList.add('hidden');
+            document.getElementById('main-scale').classList.add('hidden');
             
             // Show specific detail view
             document.getElementById(category + '-detail').classList.remove('hidden');
@@ -1051,8 +1269,9 @@
             const detailViews = document.querySelectorAll('.detail-view');
             detailViews.forEach(view => view.classList.add('hidden'));
             
-            // Show categories view
+            // Show categories view and main scale
             document.getElementById('categories-view').classList.remove('hidden');
+            document.getElementById('main-scale').classList.remove('hidden');
             
             // Reset breadcrumb
             document.getElementById('breadcrumb').innerHTML = 'Donald Trump';
