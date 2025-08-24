@@ -106,77 +106,106 @@
             align-items: center;
             justify-content: space-between;
             position: relative;
-            height: 60px;
+            height: 80px;
+            margin: 20px 0;
         }
 
         .scale-line {
             position: absolute;
             top: 50%;
-            left: 10%;
-            right: 10%;
-            height: 4px;
+            left: 15%;
+            right: 15%;
+            height: 6px;
             background: linear-gradient(to right, #ef4444, #f59e0b, #10b981, #f59e0b, #ef4444);
-            border-radius: 2px;
+            border-radius: 3px;
             transform: translateY(-50%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .scale-marker {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: white;
-            border: 3px solid #667eea;
+            border: 4px solid #667eea;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             z-index: 2;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2); }
-            50% { box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4); }
-            100% { box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2); }
+            0% { 
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); 
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6); 
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% { 
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); 
+                transform: translate(-50%, -50%) scale(1);
+            }
         }
 
         .scale-extreme {
-            flex: 1;
-            text-align: center;
-            color: white;
+            width: 45%;
+            position: absolute;
+            top: -10px;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             z-index: 1;
-            position: relative;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            line-height: 1.2;
         }
 
         .scale-left {
+            left: 0;
             text-align: left;
-            padding-left: 20px;
         }
 
         .scale-right {
+            right: 0;
             text-align: right;
-            padding-right: 20px;
         }
 
         .scale-title {
             text-align: center;
             color: white;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 10px;
-            font-weight: 500;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .scale-truth-note {
             text-align: center;
             color: white;
-            font-size: 0.8rem;
-            opacity: 0.7;
-            margin-top: 10px;
+            font-size: 0.85rem;
+            margin-top: 15px;
             font-style: italic;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            opacity: 0.9;
+        }
+
+        /* Detail page overrides for better contrast */
+        .detail-view .scale-title {
+            color: #2c3e50;
+            text-shadow: none;
+        }
+
+        .detail-view .scale-truth-note {
+            color: #4a5568;
+            text-shadow: none;
+            opacity: 1;
         }
 
         .category-card {
@@ -528,12 +557,12 @@
                     <div class="scale-title">Immigration Policy Spectrum</div>
                     <div class="scale-container">
                         <div class="scale-extreme scale-left">
-                            Open all borders! 🌍
+                            "We're tearing families apart!"
                         </div>
                         <div class="scale-line"></div>
                         <div class="scale-marker"></div>
                         <div class="scale-extreme scale-right">
-                            Zero immigration! 🚫
+                            "They broke the law coming here!"
                         </div>
                     </div>
                     <div class="scale-truth-note">Balanced immigration policy lies between these extremes...</div>
@@ -636,12 +665,12 @@
                     <div class="scale-title">Health Policy Spectrum</div>
                     <div class="scale-container">
                         <div class="scale-extreme scale-left">
-                            Government-run healthcare! 🏥
+                            "He's pushing dangerous conspiracy theories!"
                         </div>
                         <div class="scale-line"></div>
                         <div class="scale-marker"></div>
                         <div class="scale-extreme scale-right">
-                            Zero health regulations! 🍔
+                            "Finally someone fighting Big Pharma!"
                         </div>
                     </div>
                     <div class="scale-truth-note">Effective health policy balances freedom and protection...</div>
@@ -739,12 +768,12 @@
                     <div class="scale-title">Trade Policy Spectrum</div>
                     <div class="scale-container">
                         <div class="scale-extreme scale-left">
-                            Free trade everything! 🌐
+                            "These tariffs are only going to cost us more at the store!"
                         </div>
                         <div class="scale-line"></div>
                         <div class="scale-marker"></div>
                         <div class="scale-extreme scale-right">
-                            Tariff everything! 🛡️
+                            "Finally we're being treated fairly!"
                         </div>
                     </div>
                     <div class="scale-truth-note">Smart trade policy uses targeted approaches...</div>
@@ -842,12 +871,12 @@
                     <div class="scale-title">Energy Policy Spectrum</div>
                     <div class="scale-container">
                         <div class="scale-extreme scale-left">
-                            100% renewable now! 🌱
+                            "He's destroying the planet for profits!"
                         </div>
                         <div class="scale-line"></div>
                         <div class="scale-marker"></div>
                         <div class="scale-extreme scale-right">
-                            Drill baby drill! ⛽
+                            "Energy independence makes us stronger!"
                         </div>
                     </div>
                     <div class="scale-truth-note">Energy independence requires a balanced approach...</div>
@@ -930,12 +959,12 @@
                     <div class="scale-title">Economic Policy Spectrum</div>
                     <div class="scale-container">
                         <div class="scale-extreme scale-left">
-                            Tax the rich 90%! 💰
+                            "You're taking away from middle class to make billionaires richer!"
                         </div>
                         <div class="scale-line"></div>
                         <div class="scale-marker"></div>
                         <div class="scale-extreme scale-right">
-                            Zero taxes for all! 🚫💸
+                            "Less handouts to those who don't work for it."
                         </div>
                     </div>
                     <div class="scale-truth-note">Sustainable economics balances growth and equity...</div>
@@ -1023,12 +1052,12 @@
                     <div class="scale-title">Foreign Policy Spectrum</div>
                     <div class="scale-container">
                         <div class="scale-extreme scale-left">
-                            World police everywhere! 🌍🚓
+                            "He's embarrassing us on the world stage!"
                         </div>
                         <div class="scale-line"></div>
                         <div class="scale-marker"></div>
                         <div class="scale-extreme scale-right">
-                            Total isolationism! 🏠
+                            "Other countries finally respect America!"
                         </div>
                     </div>
                     <div class="scale-truth-note">Effective diplomacy requires strategic engagement...</div>
@@ -1121,12 +1150,12 @@
                     <div class="scale-title">Presidential Behavior Spectrum</div>
                     <div class="scale-container">
                         <div class="scale-extreme scale-left">
-                            Every action is evil! 👹
+                            "He's attacking our democracy!"
                         </div>
                         <div class="scale-line"></div>
                         <div class="scale-marker"></div>
                         <div class="scale-extreme scale-right">
-                            Everything is genius! 🧠
+                            "He's draining the swamp!"
                         </div>
                     </div>
                     <div class="scale-truth-note">Complex leaders have both strengths and flaws...</div>
