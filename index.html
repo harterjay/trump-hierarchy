@@ -112,43 +112,30 @@
 
         .scale-line {
             position: absolute;
-            bottom: 40px;
+            bottom: 30px;
             left: 10%;
             right: 10%;
-            height: 8px;
-            background: linear-gradient(to right, 
-                #ef4444 0%, 
-                #f59e0b 25%, 
-                #10b981 50%, 
-                #f59e0b 75%, 
-                #ef4444 100%
-            );
-            border-radius: 50px;
-            box-shadow: 
-                0 4px 12px rgba(0,0,0,0.15),
-                inset 0 2px 4px rgba(255,255,255,0.3);
+            height: 3px;
+            background: #667eea;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
             z-index: 1;
         }
 
         .scale-line::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: 50%;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, 
-                transparent 0%, 
-                rgba(255,255,255,0.2) 30%, 
-                rgba(255,255,255,0.1) 70%, 
-                transparent 100%
-            );
-            border-radius: 50px;
+            height: 1px;
+            background: rgba(255,255,255,0.6);
+            transform: translateY(-50%);
         }
 
         .scale-marker {
             position: absolute;
-            bottom: 38px;
+            bottom: 28px;
             left: 50%;
             width: 20px;
             height: 20px;
