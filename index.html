@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trump Policy Information Hub</title>
+    
+    <!-- Performance optimizations -->
+    <link rel="preload" href="democrat.png" as="image">
+    <link rel="preload" href="republican.png" as="image">
+    <link rel="preload" href="https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg" as="image">
+    
+    <!-- SEO and Social Media -->
+    <meta name="description" content="Comprehensive analysis of Trump policy positions with balanced perspectives on immigration, trade, energy, and more.">
+    <meta property="og:title" content="Trump Policy Information Hub">
+    <meta property="og:description" content="Explore policy positions with conservative, liberal, and contradiction analysis">
+    <meta property="og:image" content="https://trump.riptonic.com/social-preview.jpg">
+    <meta property="og:url" content="https://trump.riptonic.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trump Policy Information Hub">
+    <meta name="twitter:description" content="Balanced analysis of Trump policies across multiple perspectives">
+    
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://upload.wikimedia.org; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
     <style>
         * {
             margin: 0;
@@ -24,26 +42,31 @@
             padding: 15px;
         }
 
+        .detail-mode .container {
+            padding: 0;
+        }
+
+        .detail-mode .header {
+            margin-bottom: 0;
+        }
+
         .header {
-            text-align: center;
-            margin-bottom: 10px;
-            color: white;
             position: sticky;
             top: 0;
             background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
-            z-index: 100;
-            padding: 10px 0;
+            z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: auto 1fr;
             gap: 20px;
+            align-items: center;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 15px 20px;
+            color: white;
         }
 
         .header-image {
@@ -52,11 +75,6 @@
             border-radius: 50%;
             border: 3px solid rgba(255,255,255,0.3);
             object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .header-text {
-            text-align: left;
         }
 
         .header-text h1 {
@@ -79,6 +97,13 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             overflow: hidden;
             min-height: 350px;
+        }
+        
+        .content-area.detail-mode {
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
         }
 
         .category-grid {
@@ -118,6 +143,12 @@
             overflow: visible;
         }
 
+        /* Override for detail view - completely remove all spacing */
+        .detail-view .political-scale {
+            margin: 0 !important;
+            padding: 15px !important;
+        }
+
         .scale-container {
             display: flex;
             align-items: center;
@@ -141,19 +172,40 @@
 
         .political-icon {
             position: absolute;
-            bottom: 0;
-            font-size: 24px;
+            bottom: -15px;
+            width: 48px;
+            height: 48px;
+            background-size: contain;
+            background-size: -webkit-contain; /* Safari fallback */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: transparent;
             z-index: 1;
+        }
+
+        /* Accessibility - Focus styles */
+        .category-card:focus, .tab-button:focus, .back-btn:focus {
+            outline: 2px solid #4a90e2;
+            outline-offset: 2px;
+        }
+
+        /* Enhanced hover/focus for interactive elements */
+        .category-card:focus {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
         }
 
         .icon-left {
             left: 8%;
             transform: translateX(-50%);
+            background-image: url('democrat.png');
         }
 
         .icon-right {
             right: 8%;
             transform: translateX(50%);
+            background-image: url('republican.png');
         }
 
         .scale-line::before {
@@ -208,7 +260,7 @@
         .scale-extreme {
             width: 20%;
             position: absolute;
-            top: 5px;
+            top: -5px;
             font-weight: 500;
             font-size: 0.75rem;
             z-index: 1;
@@ -227,24 +279,26 @@
             text-align: center;
         }
 
-        /* Speech bubble tails - align to axis endpoints */
+        /* Speech bubble tails - point to icon mouths */
         .scale-extreme::after {
             content: '';
             position: absolute;
             top: 100%;
             width: 0;
             height: 0;
-            border: 8px solid transparent;
-            margin-top: -2px;
+            border: 10px solid transparent;
+            margin-top: 5px;
             border-top-color: white;
         }
 
         .scale-left::after {
-            right: 15px;
+            left: 25%;
+            transform: translateX(-50%);
         }
 
         .scale-right::after {
-            left: 15px;
+            right: 25%;
+            transform: translateX(50%);
         }
 
         /* Hover effects for thought bubbles */
@@ -283,10 +337,28 @@
             opacity: 0.9;
         }
 
-        /* Detail page overrides for better contrast */
-        .detail-view .scale-title {
-            color: #2c3e50;
-            text-shadow: none;
+        /* Integrated header with political scale */
+        .detail-header-with-scale {
+            position: sticky;
+            top: 90px;
+            z-index: 500;
+        }
+
+        .detail-header-top {
+            background: rgba(74, 144, 226, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .detail-header-scale {
+            background: rgba(248, 250, 252, 0.95);
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .detail-header-scale .political-scale {
+            margin: 0;
+            padding: 20px;
+            background: transparent;
+            border-radius: 0;
         }
 
         .detail-view .scale-truth-note {
@@ -295,15 +367,51 @@
             opacity: 1;
         }
 
+        .detail-view .scale-line {
+            background: #2d3748;
+            box-shadow: 0 2px 8px rgba(45, 55, 72, 0.4);
+        }
+
+        .detail-view .scale-extreme {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            border: 2px solid #cbd5e0;
+        }
+
         .category-card {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             padding: 20px;
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease, transform 0.2s ease;
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Loading states */
+        .loading {
+            pointer-events: none;
+            opacity: 0.6;
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4a90e2;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         .category-card:hover {
@@ -344,46 +452,70 @@
 
         .detail-view {
             padding: 0;
+            margin: 0;
+            background: transparent;
+        }
+        
+        .detail-view .content-area {
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
         }
 
         .detail-content {
-            padding: 20px 30px;
+            padding: 0px 30px 20px 30px;
         }
 
         .detail-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 0 -15px 20px -15px;
-            padding: 15px 20px;
-            border-bottom: 2px solid #eef2f7;
-            background: white;
             position: sticky;
             top: 90px;
-            z-index: 50;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: rgba(74, 144, 226, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 500;
+        }
+
+        .detail-header-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 20px;
         }
 
         .detail-title {
             font-size: 2rem;
-            color: #2c3e50;
+            color: white;
             margin: 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .detail-content {
+            margin: 0;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .back-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
         .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-1px);
         }
 
         .summary-section {
@@ -569,6 +701,70 @@
                 align-items: flex-start;
                 gap: 15px;
             }
+            
+            .detail-header {
+                position: sticky;
+                top: 80px;
+                padding: 10px 20px;
+            }
+            
+            .detail-view {
+                padding: 0;
+                margin: 0;
+            }
+            
+            .content-area.detail-mode {
+                padding: 0;
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header-text h1 {
+                font-size: 1.4rem;
+            }
+            
+            .header-text p {
+                font-size: 0.9rem;
+            }
+            
+            .scale-extreme {
+                width: 35%;
+                font-size: 0.65rem;
+                padding: 6px 4px;
+                min-height: 30px;
+            }
+            
+            .political-icon {
+                width: 24px;
+                height: 24px;
+                bottom: -10px;
+            }
+            
+            .scale-container {
+                height: 70px;
+            }
+            
+            .detail-title {
+                font-size: 1.5rem;
+            }
+            
+            .category-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .perspective-tabs {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .tab-button {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -578,7 +774,8 @@
             <div class="header-content">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg" 
                      alt="Donald Trump Official Portrait" 
-                     class="header-image">
+                     class="header-image"
+                     loading="eager">
                 <div class="header-text">
                     <h1>Trump Policy Information Hub</h1>
                     <p>Explore policy positions and supporting information</p>
@@ -588,17 +785,17 @@
 
 
         <!-- Political Scale - Main Page -->
-        <div class="political-scale" id="main-scale">
+        <div class="political-scale" id="main-scale" role="img" aria-label="Political spectrum showing opposing viewpoints about Trump">
             <div class="scale-title">The Political Spectrum</div>
             <div class="scale-container">
-                <div class="scale-extreme scale-left">
+                <div class="scale-extreme scale-left" role="note" aria-label="Liberal perspective">
                     "Worst President in history!"
                 </div>
-                <div class="scale-line"></div>
-                <div class="political-icon icon-left">🫏</div>
-                <div class="scale-marker"></div>
-                <div class="political-icon icon-right">🐘</div>
-                <div class="scale-extreme scale-right">
+                <div class="scale-line" aria-hidden="true"></div>
+                <div class="political-icon icon-left" aria-label="Democratic party symbol" role="img"></div>
+                <div class="scale-marker" aria-label="Truth lies in the middle" role="img"></div>
+                <div class="political-icon icon-right" aria-label="Republican party symbol" role="img"></div>
+                <div class="scale-extreme scale-right" role="note" aria-label="Conservative perspective">
                     "Greatest President ever!"
                 </div>
             </div>
@@ -607,68 +804,74 @@
 
         <div class="content-area">
             <!-- Main Categories View -->
-            <div id="categories-view" class="category-grid">
-                <div class="category-card" onclick="showDetail('immigration')">
+            <nav id="categories-view" class="category-grid" role="navigation" aria-label="Policy categories">
+                <div class="category-card" onclick="showDetail('immigration')" role="button" tabindex="0" aria-label="View Immigration Policy details">
                     <h3>🛂 Immigration Policy</h3>
                     <p>Border security measures, deportation policies, and immigration reform proposals including wall construction and legal immigration changes.</p>
                 </div>
 
-                <div class="category-card" onclick="showDetail('maha')">
+                <div class="category-card" onclick="showDetail('maha')" role="button" tabindex="0" aria-label="View Make America Healthy Again details">
                     <h3>🥗 Make America Healthy Again</h3>
                     <p>Health policy initiatives focusing on chronic disease prevention, food system reform, and public health improvements.</p>
                 </div>
 
-                <div class="category-card" onclick="showDetail('tariffs')">
+                <div class="category-card" onclick="showDetail('tariffs')" role="button" tabindex="0" aria-label="View Trade and Tariffs details">
                     <h3>💼 Trade & Tariffs</h3>
                     <p>International trade policies, tariff structures, and economic protectionism measures to support American manufacturing.</p>
                 </div>
 
-                <div class="category-card" onclick="showDetail('energy')">
+                <div class="category-card" onclick="showDetail('energy')" role="button" tabindex="0" aria-label="View Energy Policy details">
                     <h3>⚡ Energy Policy</h3>
                     <p>Domestic energy production, fossil fuel development, and energy independence initiatives including drilling and pipeline projects.</p>
                 </div>
 
-                <div class="category-card" onclick="showDetail('economy')">
+                <div class="category-card" onclick="showDetail('economy')" role="button" tabindex="0" aria-label="View Economic Policy details">
                     <h3>📈 Economic Policy</h3>
                     <p>Tax policy, deregulation efforts, job creation initiatives, and business-friendly economic reforms.</p>
                 </div>
 
-                <div class="category-card" onclick="showDetail('foreign')">
+                <div class="category-card" onclick="showDetail('foreign')" role="button" tabindex="0" aria-label="View Foreign Policy details">
                     <h3>🌍 Foreign Policy</h3>
                     <p>International relations approach, military strategy, alliance policies, and America First foreign policy principles.</p>
                 </div>
 
-                <div class="category-card potpourri-card" onclick="showDetail('potpourri')">
+                <div class="category-card potpourri-card" onclick="showDetail('potpourri')" role="button" tabindex="0" aria-label="View Potpourri details">
                     <h3>🎭 Potpourri</h3>
                     <p>Unconventional actions, controversies, and surprising moves.</p>
                 </div>
-            </div>
+            </nav>
+        </div>
 
             <!-- Immigration Detail View -->
             <div id="immigration-detail" class="detail-view hidden">
-                <div class="detail-header">
-                    <h2 class="detail-title">Immigration Policy</h2>
-                    <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                <div class="detail-header-with-scale">
+                    <div class="detail-header-top">
+                        <div class="detail-header-content">
+                            <h2 class="detail-title">Immigration Policy</h2>
+                            <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                        </div>
+                    </div>
+                    <div class="detail-header-scale">
+                        <div class="political-scale" style="max-width: 1400px; margin: 0 auto;">
+                            <div class="scale-title">Immigration Policy Spectrum</div>
+                            <div class="scale-container">
+                                <div class="scale-extreme scale-left">
+                                    "We're tearing families apart!"
+                                </div>
+                                <div class="scale-line"></div>
+                                <div class="political-icon icon-left"></div>
+                                <div class="scale-marker"></div>
+                                <div class="political-icon icon-right"></div>
+                                <div class="scale-extreme scale-right">
+                                    "They broke the law coming here!"
+                                </div>
+                            </div>
+                            <div class="scale-truth-note">Balanced immigration policy lies between these extremes...</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="detail-content">
-                    <!-- Immigration Scale -->
-                    <div class="political-scale">
-                        <div class="scale-title">Immigration Policy Spectrum</div>
-                        <div class="scale-container">
-                            <div class="scale-extreme scale-left">
-                                "We're tearing families apart!"
-                            </div>
-                            <div class="scale-line"></div>
-                            <div class="political-icon icon-left">🫏</div>
-                            <div class="scale-marker"></div>
-                            <div class="political-icon icon-right">🐘</div>
-                            <div class="scale-extreme scale-right">
-                                "They broke the law coming here!"
-                            </div>
-                        </div>
-                        <div class="scale-truth-note">Balanced immigration policy lies between these extremes...</div>
-                    </div>
 
                     <div class="summary-section">
                     <h4>Policy Summary</h4>
@@ -772,7 +975,9 @@
                             "He's pushing dangerous conspiracy theories!"
                         </div>
                         <div class="scale-line"></div>
+                        <div class="political-icon icon-left"></div>
                         <div class="scale-marker"></div>
+                        <div class="political-icon icon-right"></div>
                         <div class="scale-extreme scale-right">
                             "Finally someone fighting Big Pharma!"
                         </div>
@@ -877,7 +1082,9 @@
                             "These tariffs are only going to cost us more at the store!"
                         </div>
                         <div class="scale-line"></div>
+                        <div class="political-icon icon-left"></div>
                         <div class="scale-marker"></div>
+                        <div class="political-icon icon-right"></div>
                         <div class="scale-extreme scale-right">
                             "Finally we're being treated fairly!"
                         </div>
@@ -963,6 +1170,7 @@
                         <div class="source-meta">Source: Department of Commerce Trade Analysis</div>
                     </div>
                 </div>
+                </div>
             </div>
 
             <!-- Energy Policy Detail View -->
@@ -972,83 +1180,87 @@
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
                 </div>
 
-                <!-- Energy Scale -->
-                <div class="political-scale">
-                    <div class="scale-title">Energy Policy Spectrum</div>
-                    <div class="scale-container">
-                        <div class="scale-extreme scale-left">
-                            "He's destroying the planet for profits!"
+                <div class="detail-content">
+                    <!-- Energy Scale -->
+                    <div class="political-scale">
+                        <div class="scale-title">Energy Policy Spectrum</div>
+                        <div class="scale-container">
+                            <div class="scale-extreme scale-left">
+                                "He's destroying the planet for profits!"
+                            </div>
+                            <div class="scale-line"></div>
+                            <div class="political-icon icon-left"></div>
+                            <div class="scale-marker"></div>
+                            <div class="political-icon icon-right"></div>
+                            <div class="scale-extreme scale-right">
+                                "Energy independence makes us stronger!"
+                            </div>
                         </div>
-                        <div class="scale-line"></div>
-                        <div class="scale-marker"></div>
-                        <div class="scale-extreme scale-right">
-                            "Energy independence makes us stronger!"
-                        </div>
-                    </div>
-                    <div class="scale-truth-note">Energy independence requires a balanced approach...</div>
-                </div>
-
-                <div class="summary-section">
-                    <h4>Policy Summary</h4>
-                    <p>Trump's energy policy prioritizes American energy dominance through expanded domestic oil, gas, and coal production. The strategy includes opening federal lands for drilling, approving pipeline projects, and reducing regulatory barriers to energy development.</p>
-                    <p>Key initiatives include resuming offshore drilling permits, completing pipeline projects like Keystone XL, and rolling back environmental regulations that limit fossil fuel extraction while promoting energy exports.</p>
-                </div>
-
-                <div class="analysis-section">
-                    <h4>Policy Analysis & Perspectives</h4>
-                    
-                    <div class="perspective-tabs">
-                        <button class="tab-button active" onclick="showPerspective('energy', 'supportive')">Conservative View</button>
-                        <button class="tab-button" onclick="showPerspective('energy', 'critical')">Liberal Critique</button>
-                        <button class="tab-button" onclick="showPerspective('energy', 'contradictions')">Contradictions</button>
+                        <div class="scale-truth-note">Energy independence requires a balanced approach...</div>
                     </div>
 
-                    <div id="energy-supportive" class="perspective-content active">
-                        <div class="analysis-point supportive">
-                            <div class="analysis-title">Energy Independence & Security</div>
-                            <div class="analysis-description">Maximizing domestic energy production reduces dependence on potentially unstable foreign suppliers and strengthens national security through energy self-sufficiency.</div>
-                            <div class="analysis-tag tag-supportive">National Security</div>
+                    <div class="summary-section">
+                        <h4>Policy Summary</h4>
+                        <p>Trump's energy policy prioritizes American energy dominance through expanded domestic oil, gas, and coal production. The strategy includes opening federal lands for drilling, approving pipeline projects, and reducing regulatory barriers to energy development.</p>
+                        <p>Key initiatives include resuming offshore drilling permits, completing pipeline projects like Keystone XL, and rolling back environmental regulations that limit fossil fuel extraction while promoting energy exports.</p>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h4>Policy Analysis & Perspectives</h4>
+                        
+                        <div class="perspective-tabs">
+                            <button class="tab-button active" onclick="showPerspective('energy', 'supportive')">Conservative View</button>
+                            <button class="tab-button" onclick="showPerspective('energy', 'critical')">Liberal Critique</button>
+                            <button class="tab-button" onclick="showPerspective('energy', 'contradictions')">Contradictions</button>
                         </div>
-                        <div class="analysis-point supportive">
-                            <div class="analysis-title">Economic Growth & Jobs</div>
-                            <div class="analysis-description">Energy sector expansion creates high-paying jobs in rural areas and generates significant tax revenue for local communities while boosting overall economic growth.</div>
-                            <div class="analysis-tag tag-supportive">Economic Benefits</div>
+
+                        <div id="energy-supportive" class="perspective-content active">
+                            <div class="analysis-point supportive">
+                                <div class="analysis-title">Energy Independence & Security</div>
+                                <div class="analysis-description">Maximizing domestic energy production reduces dependence on potentially unstable foreign suppliers and strengthens national security through energy self-sufficiency.</div>
+                                <div class="analysis-tag tag-supportive">National Security</div>
+                            </div>
+                            <div class="analysis-point supportive">
+                                <div class="analysis-title">Economic Growth & Jobs</div>
+                                <div class="analysis-description">Energy sector expansion creates high-paying jobs in rural areas and generates significant tax revenue for local communities while boosting overall economic growth.</div>
+                                <div class="analysis-tag tag-supportive">Economic Benefits</div>
+                            </div>
+                            <div class="analysis-point supportive">
+                                <div class="analysis-title">Consumer Energy Costs</div>
+                                <div class="analysis-description">Increased domestic production can help keep energy prices low for consumers and businesses, reducing costs across the economy.</div>
+                                <div class="analysis-tag tag-supportive">Cost Savings</div>
+                            </div>
                         </div>
-                        <div class="analysis-point supportive">
-                            <div class="analysis-title">Consumer Energy Costs</div>
-                            <div class="analysis-description">Increased domestic production can help keep energy prices low for consumers and businesses, reducing costs across the economy.</div>
-                            <div class="analysis-tag tag-supportive">Cost Savings</div>
+
+                        <div id="energy-critical" class="perspective-content">
+                            <div class="analysis-point critical">
+                                <div class="analysis-title">Climate Change Acceleration</div>
+                                <div class="analysis-description">Expanding fossil fuel production directly contradicts climate science recommendations and undermines global efforts to reduce greenhouse gas emissions.</div>
+                                <div class="analysis-tag tag-critical">Environmental Impact</div>
+                            </div>
+                            <div class="analysis-point critical">
+                                <div class="analysis-title">Renewable Energy Lag</div>
+                                <div class="analysis-description">Focusing on fossil fuels may cause America to fall behind in the growing renewable energy market, potentially missing economic opportunities in clean technology.</div>
+                                <div class="analysis-tag tag-critical">Innovation Gap</div>
+                            </div>
+                        </div>
+
+                        <div id="energy-contradictions" class="perspective-content">
+                            <div class="analysis-point contradiction">
+                                <div class="analysis-title">Market Forces vs. Policy</div>
+                                <div class="analysis-description">Market trends increasingly favor renewable energy due to cost advantages, potentially making heavy fossil fuel promotion economically counterproductive.</div>
+                                <div class="analysis-tag tag-contradiction">Market Dynamics</div>
+                            </div>
                         </div>
                     </div>
 
-                    <div id="energy-critical" class="perspective-content">
-                        <div class="analysis-point critical">
-                            <div class="analysis-title">Climate Change Acceleration</div>
-                            <div class="analysis-description">Expanding fossil fuel production directly contradicts climate science recommendations and undermines global efforts to reduce greenhouse gas emissions.</div>
-                            <div class="analysis-tag tag-critical">Environmental Impact</div>
+                    <div class="sources-section">
+                        <h4>Supporting Sources</h4>
+                        <div class="source-item">
+                            <div class="source-title">American Energy Dominance Strategy</div>
+                            <div class="source-description">Comprehensive plan for maximizing domestic energy production and reducing regulatory barriers to fossil fuel development.</div>
+                            <div class="source-meta">Source: Department of Energy Policy Framework</div>
                         </div>
-                        <div class="analysis-point critical">
-                            <div class="analysis-title">Renewable Energy Lag</div>
-                            <div class="analysis-description">Focusing on fossil fuels may cause America to fall behind in the growing renewable energy market, potentially missing economic opportunities in clean technology.</div>
-                            <div class="analysis-tag tag-critical">Innovation Gap</div>
-                        </div>
-                    </div>
-
-                    <div id="energy-contradictions" class="perspective-content">
-                        <div class="analysis-point contradiction">
-                            <div class="analysis-title">Market Forces vs. Policy</div>
-                            <div class="analysis-description">Market trends increasingly favor renewable energy due to cost advantages, potentially making heavy fossil fuel promotion economically counterproductive.</div>
-                            <div class="analysis-tag tag-contradiction">Market Dynamics</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sources-section">
-                    <h4>Supporting Sources</h4>
-                    <div class="source-item">
-                        <div class="source-title">American Energy Dominance Strategy</div>
-                        <div class="source-description">Comprehensive plan for maximizing domestic energy production and reducing regulatory barriers to fossil fuel development.</div>
-                        <div class="source-meta">Source: Department of Energy Policy Framework</div>
                     </div>
                 </div>
             </div>
@@ -1060,21 +1272,24 @@
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
                 </div>
 
-                <!-- Economy Scale -->
-                <div class="political-scale">
-                    <div class="scale-title">Economic Policy Spectrum</div>
-                    <div class="scale-container">
-                        <div class="scale-extreme scale-left">
-                            "You're taking away from middle class to make billionaires richer!"
+                <div class="detail-content">
+                    <!-- Economy Scale -->
+                    <div class="political-scale">
+                        <div class="scale-title">Economic Policy Spectrum</div>
+                        <div class="scale-container">
+                            <div class="scale-extreme scale-left">
+                                "You're taking away from middle class to make billionaires richer!"
+                            </div>
+                            <div class="scale-line"></div>
+                            <div class="political-icon icon-left"></div>
+                            <div class="scale-marker"></div>
+                            <div class="political-icon icon-right"></div>
+                            <div class="scale-extreme scale-right">
+                                "Less handouts to those who don't work for it."
+                            </div>
                         </div>
-                        <div class="scale-line"></div>
-                        <div class="scale-marker"></div>
-                        <div class="scale-extreme scale-right">
-                            "Less handouts to those who don't work for it."
-                        </div>
+                        <div class="scale-truth-note">Sustainable economics balances growth and equity...</div>
                     </div>
-                    <div class="scale-truth-note">Sustainable economics balances growth and equity...</div>
-                </div>
 
                 <div class="summary-section">
                     <h4>Policy Summary</h4>
@@ -1144,6 +1359,7 @@
                         <div class="source-meta">Source: Treasury Department Economic Analysis</div>
                     </div>
                 </div>
+                </div>
             </div>
 
             <!-- Foreign Policy Detail View -->
@@ -1153,93 +1369,97 @@
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
                 </div>
 
-                <!-- Foreign Policy Scale -->
-                <div class="political-scale">
-                    <div class="scale-title">Foreign Policy Spectrum</div>
-                    <div class="scale-container">
-                        <div class="scale-extreme scale-left">
-                            "He's embarrassing us on the world stage!"
+                <div class="detail-content">
+                    <!-- Foreign Policy Scale -->
+                    <div class="political-scale">
+                        <div class="scale-title">Foreign Policy Spectrum</div>
+                        <div class="scale-container">
+                            <div class="scale-extreme scale-left">
+                                "He's embarrassing us on the world stage!"
+                            </div>
+                            <div class="scale-line"></div>
+                            <div class="political-icon icon-left"></div>
+                            <div class="scale-marker"></div>
+                            <div class="political-icon icon-right"></div>
+                            <div class="scale-extreme scale-right">
+                                "Other countries finally respect America!"
+                            </div>
                         </div>
-                        <div class="scale-line"></div>
-                        <div class="scale-marker"></div>
-                        <div class="scale-extreme scale-right">
-                            "Other countries finally respect America!"
-                        </div>
-                    </div>
-                    <div class="scale-truth-note">Effective diplomacy requires strategic engagement...</div>
-                </div>
-
-                <div class="summary-section">
-                    <h4>Policy Summary</h4>
-                    <p>Trump's foreign policy emphasizes "America First" principles, focusing on bilateral relationships over multilateral agreements and prioritizing American economic and security interests in international dealings.</p>
-                    <p>Key approaches include renegotiating international agreements to favor America, maintaining strong military deterrence, and using economic leverage to advance American interests while reducing involvement in foreign conflicts.</p>
-                </div>
-
-                <div class="analysis-section">
-                    <h4>Policy Analysis & Perspectives</h4>
-                    
-                    <div class="perspective-tabs">
-                        <button class="tab-button active" onclick="showPerspective('foreign', 'supportive')">Conservative View</button>
-                        <button class="tab-button" onclick="showPerspective('foreign', 'critical')">Liberal Critique</button>
-                        <button class="tab-button" onclick="showPerspective('foreign', 'contradictions')">Contradictions</button>
+                        <div class="scale-truth-note">Effective diplomacy requires strategic engagement...</div>
                     </div>
 
-                    <div id="foreign-supportive" class="perspective-content active">
-                        <div class="analysis-point supportive">
-                            <div class="analysis-title">Prioritizing American Interests</div>
-                            <div class="analysis-description">America First foreign policy ensures that international agreements and relationships primarily benefit American workers, businesses, and security rather than global interests.</div>
-                            <div class="analysis-tag tag-supportive">National Priority</div>
+                    <div class="summary-section">
+                        <h4>Policy Summary</h4>
+                        <p>Trump's foreign policy emphasizes "America First" principles, focusing on bilateral relationships over multilateral agreements and prioritizing American economic and security interests in international dealings.</p>
+                        <p>Key approaches include renegotiating international agreements to favor America, maintaining strong military deterrence, and using economic leverage to advance American interests while reducing involvement in foreign conflicts.</p>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h4>Policy Analysis & Perspectives</h4>
+                        
+                        <div class="perspective-tabs">
+                            <button class="tab-button active" onclick="showPerspective('foreign', 'supportive')">Conservative View</button>
+                            <button class="tab-button" onclick="showPerspective('foreign', 'critical')">Liberal Critique</button>
+                            <button class="tab-button" onclick="showPerspective('foreign', 'contradictions')">Contradictions</button>
                         </div>
-                        <div class="analysis-point supportive">
-                            <div class="analysis-title">Burden Sharing with Allies</div>
-                            <div class="analysis-description">Requiring allies to contribute more to shared defense costs ensures fairer distribution of military and economic responsibilities while maintaining strong partnerships.</div>
-                            <div class="analysis-tag tag-supportive">Alliance Equity</div>
+
+                        <div id="foreign-supportive" class="perspective-content active">
+                            <div class="analysis-point supportive">
+                                <div class="analysis-title">Prioritizing American Interests</div>
+                                <div class="analysis-description">America First foreign policy ensures that international agreements and relationships primarily benefit American workers, businesses, and security rather than global interests.</div>
+                                <div class="analysis-tag tag-supportive">National Priority</div>
+                            </div>
+                            <div class="analysis-point supportive">
+                                <div class="analysis-title">Burden Sharing with Allies</div>
+                                <div class="analysis-description">Requiring allies to contribute more to shared defense costs ensures fairer distribution of military and economic responsibilities while maintaining strong partnerships.</div>
+                                <div class="analysis-tag tag-supportive">Alliance Equity</div>
+                            </div>
+                            <div class="analysis-point supportive">
+                                <div class="analysis-title">Avoiding Foreign Entanglements</div>
+                                <div class="analysis-description">Reducing involvement in foreign conflicts and nation-building saves American lives and resources while allowing focus on domestic priorities.</div>
+                                <div class="analysis-tag tag-supportive">Non-Intervention</div>
+                            </div>
                         </div>
-                        <div class="analysis-point supportive">
-                            <div class="analysis-title">Avoiding Foreign Entanglements</div>
-                            <div class="analysis-description">Reducing involvement in foreign conflicts and nation-building saves American lives and resources while allowing focus on domestic priorities.</div>
-                            <div class="analysis-tag tag-supportive">Non-Intervention</div>
+
+                        <div id="foreign-critical" class="perspective-content">
+                            <div class="analysis-point critical">
+                                <div class="analysis-title">Alliance Relationship Damage</div>
+                                <div class="analysis-description">Transactional approaches to longstanding alliances may weaken relationships built over decades and reduce American influence in global affairs.</div>
+                                <div class="analysis-tag tag-critical">Alliance Impact</div>
+                            </div>
+                            <div class="analysis-point critical">
+                                <div class="analysis-title">Multilateral Cooperation Gaps</div>
+                                <div class="analysis-description">Avoiding multilateral institutions and agreements may limit America's ability to address global challenges that require coordinated international responses.</div>
+                                <div class="analysis-tag tag-critical">Global Cooperation</div>
+                            </div>
+                            <div class="analysis-point critical">
+                                <div class="analysis-title">Authoritarian Relationship Concerns</div>
+                                <div class="analysis-description">Friendly relationships with authoritarian leaders may undermine America's traditional role as a promoter of democratic values and human rights.</div>
+                                <div class="analysis-tag tag-critical">Democratic Values</div>
+                            </div>
+                        </div>
+
+                        <div id="foreign-contradictions" class="perspective-content">
+                            <div class="analysis-point contradiction">
+                                <div class="analysis-title">Isolationist vs. Global Leadership</div>
+                                <div class="analysis-description">Reducing international engagement conflicts with maintaining global leadership and influence that serves long-term American strategic interests.</div>
+                                <div class="analysis-tag tag-contradiction">Leadership Paradox</div>
+                            </div>
+                            <div class="analysis-point contradiction">
+                                <div class="analysis-title">Military Strength vs. Non-Intervention</div>
+                                <div class="analysis-description">Emphasizing military strength while avoiding its use creates potential credibility gaps in deterring adversaries and reassuring allies.</div>
+                                <div class="analysis-tag tag-contradiction">Strategic Tension</div>
+                            </div>
                         </div>
                     </div>
 
-                    <div id="foreign-critical" class="perspective-content">
-                        <div class="analysis-point critical">
-                            <div class="analysis-title">Alliance Relationship Damage</div>
-                            <div class="analysis-description">Transactional approaches to longstanding alliances may weaken relationships built over decades and reduce American influence in global affairs.</div>
-                            <div class="analysis-tag tag-critical">Alliance Impact</div>
+                    <div class="sources-section">
+                        <h4>Supporting Sources</h4>
+                        <div class="source-item">
+                            <div class="source-title">America First Foreign Policy Doctrine</div>
+                            <div class="source-description">Strategic framework prioritizing American interests in international relations and alliance management.</div>
+                            <div class="source-meta">Source: National Security Council Policy Documents</div>
                         </div>
-                        <div class="analysis-point critical">
-                            <div class="analysis-title">Multilateral Cooperation Gaps</div>
-                            <div class="analysis-description">Avoiding multilateral institutions and agreements may limit America's ability to address global challenges that require coordinated international responses.</div>
-                            <div class="analysis-tag tag-critical">Global Cooperation</div>
-                        </div>
-                        <div class="analysis-point critical">
-                            <div class="analysis-title">Authoritarian Relationship Concerns</div>
-                            <div class="analysis-description">Friendly relationships with authoritarian leaders may undermine America's traditional role as a promoter of democratic values and human rights.</div>
-                            <div class="analysis-tag tag-critical">Democratic Values</div>
-                        </div>
-                    </div>
-
-                    <div id="foreign-contradictions" class="perspective-content">
-                        <div class="analysis-point contradiction">
-                            <div class="analysis-title">Isolationist vs. Global Leadership</div>
-                            <div class="analysis-description">Reducing international engagement conflicts with maintaining global leadership and influence that serves long-term American strategic interests.</div>
-                            <div class="analysis-tag tag-contradiction">Leadership Paradox</div>
-                        </div>
-                        <div class="analysis-point contradiction">
-                            <div class="analysis-title">Military Strength vs. Non-Intervention</div>
-                            <div class="analysis-description">Emphasizing military strength while avoiding its use creates potential credibility gaps in deterring adversaries and reassuring allies.</div>
-                            <div class="analysis-tag tag-contradiction">Strategic Tension</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sources-section">
-                    <h4>Supporting Sources</h4>
-                    <div class="source-item">
-                        <div class="source-title">America First Foreign Policy Doctrine</div>
-                        <div class="source-description">Strategic framework prioritizing American interests in international relations and alliance management.</div>
-                        <div class="source-meta">Source: National Security Council Policy Documents</div>
                     </div>
                 </div>
             </div>
@@ -1251,21 +1471,24 @@
                     <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
                 </div>
 
-                <!-- Potpourri Scale -->
-                <div class="political-scale">
-                    <div class="scale-title">Presidential Behavior Spectrum</div>
-                    <div class="scale-container">
-                        <div class="scale-extreme scale-left">
-                            "He's attacking our democracy!"
+                <div class="detail-content">
+                    <!-- Potpourri Scale -->
+                    <div class="political-scale">
+                        <div class="scale-title">Presidential Behavior Spectrum</div>
+                        <div class="scale-container">
+                            <div class="scale-extreme scale-left">
+                                "He's attacking our democracy!"
+                            </div>
+                            <div class="scale-line"></div>
+                            <div class="political-icon icon-left"></div>
+                            <div class="scale-marker"></div>
+                            <div class="political-icon icon-right"></div>
+                            <div class="scale-extreme scale-right">
+                                "He's draining the swamp!"
+                            </div>
                         </div>
-                        <div class="scale-line"></div>
-                        <div class="scale-marker"></div>
-                        <div class="scale-extreme scale-right">
-                            "He's draining the swamp!"
-                        </div>
+                        <div class="scale-truth-note">Complex leaders have both strengths and flaws...</div>
                     </div>
-                    <div class="scale-truth-note">Complex leaders have both strengths and flaws...</div>
-                </div>
 
                 <div class="summary-section">
                     <h4>Policy Summary</h4>
@@ -1380,29 +1603,82 @@
                         <div class="source-meta">Source: Department of Justice Court Filings</div>
                     </div>
                 </div>
+                </div>
             </div>
 
         </div>
-    </div>
+
 
     <script>
         function showDetail(category) {
-            // Hide categories view and main scale
-            document.getElementById('categories-view').classList.add('hidden');
-            document.getElementById('main-scale').classList.add('hidden');
-            
-            // Show specific detail view
-            document.getElementById(category + '-detail').classList.remove('hidden');
+            try {
+                // Add loading state
+                const categoryCard = event?.target?.closest('.category-card');
+                if (categoryCard) {
+                    categoryCard.classList.add('loading');
+                }
+
+                // Hide categories view and main scale
+                const categoriesView = document.getElementById('categories-view');
+                const mainScale = document.getElementById('main-scale');
+                const detailView = document.getElementById(category + '-detail');
+                const contentArea = document.querySelector('.content-area');
+                
+                if (!categoriesView || !mainScale || !detailView || !contentArea) {
+                    throw new Error(`Category elements not found for: ${category}`);
+                }
+
+                categoriesView.classList.add('hidden');
+                mainScale.classList.add('hidden');
+                contentArea.classList.add('detail-mode');
+                
+                // Show specific detail view with slight delay for smooth transition
+                setTimeout(() => {
+                    detailView.classList.remove('hidden');
+                    detailView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Remove loading state
+                    if (categoryCard) {
+                        categoryCard.classList.remove('loading');
+                    }
+                }, 50);
+
+            } catch (error) {
+                console.error('Error showing detail:', error);
+                alert('Sorry, there was an error loading this section. Please try again.');
+            }
         }
         
         function showCategories() {
-            // Hide all detail views
-            const detailViews = document.querySelectorAll('.detail-view');
-            detailViews.forEach(view => view.classList.add('hidden'));
-            
-            // Show categories view and main scale
-            document.getElementById('categories-view').classList.remove('hidden');
-            document.getElementById('main-scale').classList.remove('hidden');
+            try {
+                // Hide all detail views
+                const detailViews = document.querySelectorAll('.detail-view');
+                const contentArea = document.querySelector('.content-area');
+                if (detailViews.length === 0 || !contentArea) {
+                    throw new Error('No detail views found');
+                }
+                
+                detailViews.forEach(view => view.classList.add('hidden'));
+                contentArea.classList.remove('detail-mode');
+                
+                // Show categories view and main scale
+                const categoriesView = document.getElementById('categories-view');
+                const mainScale = document.getElementById('main-scale');
+                
+                if (!categoriesView || !mainScale) {
+                    throw new Error('Categories view or main scale not found');
+                }
+                
+                categoriesView.classList.remove('hidden');
+                mainScale.classList.remove('hidden');
+                
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+            } catch (error) {
+                console.error('Error showing categories:', error);
+                alert('Sorry, there was an error returning to categories. Please refresh the page.');
+            }
         }
         
         function getCategoryName(category) {
@@ -1419,18 +1695,65 @@
         }
 
         function showPerspective(category, perspective) {
-            // Update tab buttons
-            const categoryTabs = document.querySelectorAll(`#${category}-detail .tab-button`);
-            categoryTabs.forEach(tab => tab.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Hide all perspective contents for this category
-            const perspectiveContents = document.querySelectorAll(`#${category}-detail .perspective-content`);
-            perspectiveContents.forEach(content => content.classList.remove('active'));
-            
-            // Show selected perspective content
-            document.getElementById(`${category}-${perspective}`).classList.add('active');
+            try {
+                if (!category || !perspective) {
+                    throw new Error('Category or perspective not specified');
+                }
+
+                // Update tab buttons
+                const categoryTabs = document.querySelectorAll(`#${category}-detail .tab-button`);
+                if (categoryTabs.length === 0) {
+                    throw new Error(`No tabs found for category: ${category}`);
+                }
+                
+                categoryTabs.forEach(tab => tab.classList.remove('active'));
+                
+                if (event?.target) {
+                    event.target.classList.add('active');
+                }
+                
+                // Hide all perspective contents for this category
+                const perspectiveContents = document.querySelectorAll(`#${category}-detail .perspective-content`);
+                perspectiveContents.forEach(content => content.classList.remove('active'));
+                
+                // Show selected perspective content
+                const targetContent = document.getElementById(`${category}-${perspective}`);
+                if (!targetContent) {
+                    throw new Error(`Perspective content not found: ${category}-${perspective}`);
+                }
+                
+                targetContent.classList.add('active');
+                
+            } catch (error) {
+                console.error('Error showing perspective:', error);
+                alert('Sorry, there was an error switching perspectives. Please try again.');
+            }
         }
+
+        // Add keyboard navigation support
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add keyboard support to category cards
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        card.click();
+                    }
+                });
+            });
+
+            // Add keyboard support to back buttons
+            const backBtns = document.querySelectorAll('.back-btn');
+            backBtns.forEach(btn => {
+                btn.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        btn.click();
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
