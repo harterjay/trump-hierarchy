@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Political Information Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9fafb;
+      color: #1a202c;
+    }
+
+    /* === Global Header === */
+    header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 200;
+      background: linear-gradient(to right, #1a365d, #2563eb);
+      color: white;
+      padding: 15px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    nav {
+      margin-top: 8px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* === Main Content Wrapper === */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* === Detail Header === */
+    .detail-header {
+      position: sticky;
+      top: 90px;          /* directly below global header */
+      background: #fff;
+      z-index: 150;
+      padding: 20px;
+      font-size: 1.75rem;
+      font-weight: 600;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 0;
+      box-shadow: none;
+    }
+
+    /* === Detail Content === */
+    .detail-view {
+      padding-top: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .detail-view p {
+      margin-bottom: 1.2rem;
+    }
+
+    /* === Example Card/List Styles === */
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      color: #2d3748;
+    }
+
+    /* === Responsive Adjustments === */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      .detail-header {
+        top: 70px;  /* slightly less for smaller header height */
+        font-size: 1.5rem;
+        padding: 15px;
+      }
+
+      .detail-view {
+        padding-top: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Header -->
+  <header>
+    <h1>Political Info Hub</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Topics</a>
+      <a href="#">Elections</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Example Detail Page -->
+    <section class="detail-page">
+      <div class="detail-header">Election 2026 Overview</div>
+      <div class="detail-view">
+        <p>
+          The 2026 elections will feature a wide range of candidates, ballot measures, and state-level initiatives.
+          Voter participation is expected to increase, with several states implementing new policies to expand access.
+        </p>
+        <div class="card">
+          <h2>Key Dates</h2>
+          <p>Primary elections will begin in March 2026, with the general election scheduled for November 3, 2026.</p>
+        </div>
+        <div class="card">
+          <h2>Major Parties</h2>
+          <p>Both major parties have announced their preliminary candidate lists, with more to come during the primaries.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

@@ -42,31 +42,26 @@
             padding: 15px;
         }
 
-        .detail-mode .container {
-            padding: 0;
-        }
-
-        .detail-mode .header {
-            margin-bottom: 0;
-        }
-
         .header {
+            text-align: center;
+            margin-bottom: 10px;
+            color: white;
             position: sticky;
             top: 0;
             background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
-            z-index: 1000;
+            z-index: 100;
+            padding: 10px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .header-content {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 20px;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 20px;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 15px 20px;
-            color: white;
+            padding: 0 20px;
         }
 
         .header-image {
@@ -75,6 +70,11 @@
             border-radius: 50%;
             border: 3px solid rgba(255,255,255,0.3);
             object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .header-text {
+            text-align: left;
         }
 
         .header-text h1 {
@@ -97,16 +97,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             overflow: hidden;
             min-height: 350px;
-        }
-        
-        .content-area.detail-mode {
-            background: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            padding: 0;
-            margin: 0;
-            min-height: 0;
-            display: none;
         }
 
         .category-grid {
@@ -141,15 +131,9 @@
             backdrop-filter: blur(10px);
             padding: 15px;
             border-radius: 15px;
-            margin: 0;
+            margin: 10px 0;
             position: relative;
             overflow: visible;
-        }
-
-        /* Override for detail view - completely remove all spacing */
-        .detail-view .political-scale {
-            margin: 0 !important;
-            padding: 15px !important;
         }
 
         .scale-container {
@@ -340,94 +324,14 @@
             opacity: 0.9;
         }
 
-        /* Clean detail header */
-        .detail-header {
-            background: #fff;
-            padding: 20px;
-            border-bottom: 1px solid #e2e8f0;
-            margin: 0;
-        }
-
-        /* Admin panel styles */
-        .admin-panel {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 12px;
-            z-index: 9999;
-            display: none;
-        }
-
-        .admin-panel.visible {
-            display: block;
-        }
-
-        .admin-button {
-            background: #4a90e2;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-            font-size: 12px;
-        }
-
-        .admin-button:hover {
-            background: #357abd;
-        }
-
-        .admin-button:disabled {
-            background: #666;
-            cursor: not-allowed;
-        }
-
-        .admin-status {
-            margin: 10px 0;
-            padding: 8px;
-            border-radius: 4px;
-            font-size: 11px;
-        }
-
-        .admin-status.success {
-            background: rgba(16, 185, 129, 0.2);
-            border: 1px solid #10b981;
-        }
-
-        .admin-status.error {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid #ef4444;
-        }
-
-        .admin-status.loading {
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid #3b82f6;
-        }
-
-        .detail-header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto 20px auto;
-        }
-
-        .detail-title {
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: #2d3748;
-            margin: 0;
-        }
-
-        .detail-header .political-scale {
-            margin: 0 auto 20px auto;
-            max-width: 1400px;
-            background: transparent !important;
-            border-radius: 8px;
+        /* Detail page overrides for better contrast */
+        .detail-view .political-scale {
+            background: rgba(248, 250, 252, 0.9);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+            position: sticky;
+            top: 165px;
+            z-index: 40;
+            margin-bottom: 25px;
         }
 
         .detail-view .scale-truth-note {
@@ -520,75 +424,54 @@
         }
 
         .detail-view {
-            padding-top: 0;
-            max-width: 1400px;
-            margin: 0 auto;
-            background: transparent;
-        }
-        
-        .detail-view .content-area {
-            background: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            padding: 0;
-            margin: 0;
+            padding: 20px 0 0 0;
         }
 
         .detail-content {
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 20px 30px;
         }
 
         .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            padding: 15px 30px;
+            border-bottom: none;
+            background: transparent;
             position: sticky;
             top: 90px;
-            background: rgba(74, 144, 226, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            margin-bottom: 0;
+            left: 0;
+            transform: none;
+            z-index: 95;
+            width: 100%;
         }
 
-        .detail-header-content {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 15px 20px;
+        .detail-content {
+            margin-top: 20px;
+            padding: 20px 30px;
         }
 
         .detail-title {
             font-size: 2rem;
-            color: white;
+            color: #2c3e50;
             margin: 0;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-        }
-
-        .detail-content {
-            margin: 0;
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
         }
 
         .back-btn {
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 8px 16px;
-            border-radius: 6px;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
         }
 
         .back-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
         .summary-section {
@@ -782,14 +665,7 @@
             }
             
             .detail-view {
-                padding-top: 20px;
-                padding: 0;
-                margin: 0;
-            }
-            
-            .content-area.detail-mode {
-                padding: 0;
-                margin: 0;
+                padding-top: 10px;
             }
         }
 
@@ -843,34 +719,6 @@
     </style>
 </head>
 <body>
-    <!-- Admin Panel (hidden by default) -->
-    <div id="admin-panel" class="admin-panel">
-        <div style="font-weight: bold; margin-bottom: 10px;">🔧 Admin Panel</div>
-        
-        <div>
-            <label for="admin-category" style="font-size: 11px;">Category:</label>
-            <select id="admin-category" style="width: 100%; margin: 5px 0; padding: 4px;">
-                <option value="all">All Categories</option>
-                <option value="immigration">Immigration</option>
-                <option value="maha">MAHA</option>
-                <option value="tariffs">Trade & Tariffs</option>
-                <option value="energy">Energy</option>
-                <option value="economy">Economy</option>
-                <option value="foreign">Foreign Policy</option>
-                <option value="potpourri">Potpourri</option>
-            </select>
-        </div>
-        
-        <button id="update-content-btn" class="admin-button" onclick="updateContent()">
-            🔄 Update Content
-        </button>
-        <button class="admin-button" onclick="closeAdminPanel()" style="background: #666;">
-            ❌ Close
-        </button>
-        
-        <div id="admin-status"></div>
-    </div>
-
     <div class="container">
         <div class="header">
             <div class="header-content">
@@ -941,37 +789,33 @@
                     <h3>🎭 Potpourri</h3>
                     <p>Unconventional actions, controversies, and surprising moves.</p>
                 </div>
-            </nav>
-        </div>
+            </div>
 
             <!-- Immigration Detail View -->
             <div id="immigration-detail" class="detail-view hidden">
                 <div class="detail-header">
-                    <div class="detail-header-content">
-                        <h2 class="detail-title">Immigration Policy</h2>
-                        <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
-                    </div>
-                    
-                    <!-- Embedded Political Scale directly in header -->
-                    <div style="background: rgba(248, 250, 252, 0.95); padding: 20px; border-radius: 8px; margin: 20px auto; max-width: 1200px;">
-                        <div style="text-align: center; color: #2c3e50; font-size: 1rem; font-weight: 600; margin-bottom: 15px;">Immigration Policy Spectrum</div>
-                        <div style="display: flex; align-items: center; justify-content: space-between; position: relative; height: 90px; margin: 10px 0;">
-                            <div style="position: absolute; left: 0; width: 20%; top: -5px; font-weight: 500; font-size: 0.75rem; background: white; color: #2c3e50; padding: 8px 6px; border-radius: 14px; box-shadow: 0 3px 12px rgba(0,0,0,0.2); line-height: 1.2; border: 2px solid #e2e8f0; min-height: 35px; display: flex; align-items: center; justify-content: center; text-align: center;">
-                                "We're tearing families apart!"
-                            </div>
-                            <div style="position: absolute; bottom: 5px; left: 12%; right: 12%; height: 6px; background: #4a90e2; border-radius: 3px; box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);"></div>
-                            <div style="position: absolute; bottom: -15px; left: 8%; width: 48px; height: 48px; background-image: url('democrat.png'); background-size: contain; background-repeat: no-repeat; background-position: center; transform: translateX(-50%);"></div>
-                            <div style="position: absolute; bottom: 2px; left: 50%; width: 20px; height: 20px; background: white; border: 3px solid #4a90e2; border-radius: 50%; transform: translateX(-50%); box-shadow: 0 3px 10px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,255,255,0.8);"></div>
-                            <div style="position: absolute; bottom: -15px; right: 8%; width: 48px; height: 48px; background-image: url('republican.png'); background-size: contain; background-repeat: no-repeat; background-position: center; transform: translateX(50%);"></div>
-                            <div style="position: absolute; right: 0; width: 20%; top: -5px; font-weight: 500; font-size: 0.75rem; background: white; color: #2c3e50; padding: 8px 6px; border-radius: 14px; box-shadow: 0 3px 12px rgba(0,0,0,0.2); line-height: 1.2; border: 2px solid #e2e8f0; min-height: 35px; display: flex; align-items: center; justify-content: center; text-align: center;">
-                                "They broke the law coming here!"
-                            </div>
-                        </div>
-                        <div style="text-align: center; color: #4a5568; font-size: 0.85rem; margin-top: 15px; font-style: italic;">Balanced immigration policy lies between these extremes...</div>
-                    </div>
+                    <h2 class="detail-title">Immigration Policy</h2>
+                    <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
                 </div>
 
                 <div class="detail-content">
+                    <!-- Immigration Scale -->
+                    <div class="political-scale">
+                        <div class="scale-title">Immigration Policy Spectrum</div>
+                        <div class="scale-container">
+                            <div class="scale-extreme scale-left">
+                                "We're tearing families apart!"
+                            </div>
+                            <div class="scale-line"></div>
+                            <div class="political-icon icon-left"></div>
+                            <div class="scale-marker"></div>
+                            <div class="political-icon icon-right"></div>
+                            <div class="scale-extreme scale-right">
+                                "They broke the law coming here!"
+                            </div>
+                        </div>
+                        <div class="scale-truth-note">Balanced immigration policy lies between these extremes...</div>
+                    </div>
 
                     <div class="summary-section">
                     <h4>Policy Summary</h4>
@@ -1707,7 +1551,7 @@
             </div>
 
         </div>
-
+    </div>
 
     <script>
         function showDetail(category) {
@@ -1722,15 +1566,13 @@
                 const categoriesView = document.getElementById('categories-view');
                 const mainScale = document.getElementById('main-scale');
                 const detailView = document.getElementById(category + '-detail');
-                const contentArea = document.querySelector('.content-area');
                 
-                if (!categoriesView || !mainScale || !detailView || !contentArea) {
+                if (!categoriesView || !mainScale || !detailView) {
                     throw new Error(`Category elements not found for: ${category}`);
                 }
 
                 categoriesView.classList.add('hidden');
                 mainScale.classList.add('hidden');
-                contentArea.classList.add('detail-mode');
                 
                 // Show specific detail view with slight delay for smooth transition
                 setTimeout(() => {
@@ -1753,13 +1595,11 @@
             try {
                 // Hide all detail views
                 const detailViews = document.querySelectorAll('.detail-view');
-                const contentArea = document.querySelector('.content-area');
-                if (detailViews.length === 0 || !contentArea) {
+                if (detailViews.length === 0) {
                     throw new Error('No detail views found');
                 }
                 
                 detailViews.forEach(view => view.classList.add('hidden'));
-                contentArea.classList.remove('detail-mode');
                 
                 // Show categories view and main scale
                 const categoriesView = document.getElementById('categories-view');
@@ -1853,78 +1693,7 @@
                     }
                 });
             });
-
-            // Admin panel keyboard shortcut (Ctrl+Shift+A)
-            document.addEventListener('keydown', function(e) {
-                if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-                    e.preventDefault();
-                    showAdminPanel();
-                }
-            });
         });
-
-        // Admin Panel Functions
-        function showAdminPanel() {
-            const password = prompt('Enter admin password:');
-            if (password === 'admin2025') { // Change this password
-                document.getElementById('admin-panel').classList.add('visible');
-            } else if (password !== null) {
-                alert('Incorrect password');
-            }
-        }
-
-        function closeAdminPanel() {
-            document.getElementById('admin-panel').classList.remove('visible');
-            document.getElementById('admin-status').innerHTML = '';
-        }
-
-        async function updateContent() {
-            const category = document.getElementById('admin-category').value;
-            const statusDiv = document.getElementById('admin-status');
-            const button = document.getElementById('update-content-btn');
-            
-            // Disable button and show loading
-            button.disabled = true;
-            button.textContent = '🔄 Updating...';
-            statusDiv.innerHTML = '<div class="admin-status loading">🔄 Updating content...</div>';
-
-            try {
-                const password = prompt('Confirm with UPDATE_SECRET:');
-                if (!password) {
-                    throw new Error('No password provided');
-                }
-
-                const response = await fetch('/api/update-content', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${password}`
-                    },
-                    body: JSON.stringify({ category })
-                });
-
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(`HTTP ${response.status}: ${errorText}`);
-                }
-
-                const data = await response.json();
-                statusDiv.innerHTML = `<div class="admin-status success">✅ ${category === 'all' ? 'All categories' : category} updated successfully!<br>Updated at: ${new Date(data.timestamp).toLocaleString()}</div>`;
-                
-                // Refresh page after 2 seconds to show updated content
-                setTimeout(() => {
-                    location.reload();
-                }, 2000);
-
-            } catch (error) {
-                console.error('Update error:', error);
-                statusDiv.innerHTML = `<div class="admin-status error">❌ Update failed: ${error.message}</div>`;
-            } finally {
-                // Re-enable button
-                button.disabled = false;
-                button.textContent = '🔄 Update Content';
-            }
-        }
     </script>
 </body>
 </html>
