@@ -135,6 +135,196 @@
             font-size: 1rem;
         }
 
+        .project2025-card {
+            grid-column: 1 / -1;
+            max-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            border: 2px solid #CD853F;
+        }
+
+        .project2025-card h3 {
+            margin-bottom: 8px;
+            color: #FFF8DC;
+        }
+
+        .project2025-card p {
+            margin: 0;
+            font-size: 1rem;
+            color: #F5DEB3;
+        }
+
+        /* Project 2025 Dashboard Styles */
+        .project2025-dashboard {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .dashboard-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+
+        .stat-status {
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+
+        .stat-status.implementing {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+        }
+
+        .stat-status.planned {
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+        }
+
+        /* Russell Vought Section */
+        .vought-section {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .vought-section h4 {
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .vought-profile {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+        }
+
+        .vought-info h5 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .vought-info p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .vought-info strong {
+            color: #3498db;
+        }
+
+        /* Implementation Tracking Styles */
+        .implementation-point {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ddd;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .implementation-point.implemented {
+            border-left-color: #2ecc71;
+            background: linear-gradient(135deg, #f8fff9 0%, #f0fff4 100%);
+        }
+
+        .implementation-point.progress {
+            border-left-color: #f39c12;
+            background: linear-gradient(135deg, #fffcf8 0%, #fff9f0 100%);
+        }
+
+        .implementation-point.planned {
+            border-left-color: #3498db;
+            background: linear-gradient(135deg, #f8fcff 0%, #f0f8ff 100%);
+        }
+
+        .implementation-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .implementation-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .implementation-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .tag-implemented {
+            background: rgba(46, 204, 113, 0.1);
+            color: #27ae60;
+        }
+
+        .tag-progress {
+            background: rgba(243, 156, 18, 0.1);
+            color: #e67e22;
+        }
+
+        .tag-planned {
+            background: rgba(52, 152, 219, 0.1);
+            color: #2980b9;
+        }
+
+        .implementation-date,
+        .implementation-timeline {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
         /* Political Scale Styles */
         .political-scale {
             background: rgba(255, 255, 255, 0.15);
@@ -161,16 +351,40 @@
             margin: 10px 0;
         }
 
-        .scale-line {
+        .spectrum-arrow {
             position: absolute;
             bottom: 5px;
             left: 12%;
             right: 12%;
-            height: 6px;
-            background: #4a90e2;
-            border-radius: 3px;
-            box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+            height: 4px;
+            background: linear-gradient(135deg, #e74c3c 0%, #95a5a6 50%, #3498db 100%);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             z-index: 1;
+        }
+
+        .spectrum-arrow::before,
+        .spectrum-arrow::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            transform: translateY(-50%);
+        }
+
+        .spectrum-arrow::before {
+            left: -8px;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-right: 8px solid #e74c3c;
+        }
+
+        .spectrum-arrow::after {
+            right: -8px;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 8px solid #3498db;
         }
 
         .political-icon {
@@ -222,21 +436,14 @@
             transform: translateY(-50%);
         }
 
-        .scale-marker {
+        .spectrum-center {
             position: absolute;
-            bottom: 2px;
+            bottom: -8px;
             left: 50%;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 3px solid #4a90e2;
-            border-radius: 50%;
             transform: translateX(-50%);
-            box-shadow: 
-                0 3px 10px rgba(0,0,0,0.3),
-                inset 0 1px 3px rgba(255,255,255,0.8);
+            font-size: 16px;
+            color: #7f8c8d;
             z-index: 2;
-            animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
@@ -436,9 +643,17 @@
             opacity: 1;
         }
 
-        .detail-view .scale-line {
-            background: #2d3748;
+        .detail-view .spectrum-arrow {
+            background: linear-gradient(135deg, #c0392b 0%, #2d3748 50%, #2980b9 100%);
             box-shadow: 0 2px 8px rgba(45, 55, 72, 0.4);
+        }
+
+        .detail-view .spectrum-arrow::before {
+            border-right-color: #c0392b;
+        }
+
+        .detail-view .spectrum-arrow::after {
+            border-left-color: #2980b9;
         }
 
         .detail-view .scale-extreme {
@@ -857,7 +1072,10 @@
                 <option value="energy">Energy</option>
                 <option value="economy">Economy</option>
                 <option value="foreign">Foreign Policy</option>
+                <option value="first-amendment">First Amendment</option>
+                <option value="judicial">Judicial Efforts</option>
                 <option value="potpourri">Potpourri</option>
+                <option value="project2025">Project 2025</option>
             </select>
         </div>
         
@@ -893,9 +1111,9 @@
                 <div class="scale-extreme scale-left" role="note" aria-label="Liberal perspective">
                     "Worst President in history!"
                 </div>
-                <div class="scale-line" aria-hidden="true"></div>
+                <div class="spectrum-arrow" aria-hidden="true"></div>
                 <div class="political-icon icon-left" aria-label="Democratic party symbol" role="img"></div>
-                <div class="scale-marker" aria-label="Truth lies in the middle" role="img"></div>
+                <div class="spectrum-center" aria-label="Truth lies in the middle" role="img">⚖️</div>
                 <div class="political-icon icon-right" aria-label="Republican party symbol" role="img"></div>
                 <div class="scale-extreme scale-right" role="note" aria-label="Conservative perspective">
                     "Greatest President ever!"
@@ -937,9 +1155,24 @@
                     <p>International relations approach, military strategy, alliance policies, and America First foreign policy principles.</p>
                 </div>
 
+                <div class="category-card" onclick="showDetail('first-amendment')" role="button" tabindex="0" aria-label="View First Amendment details">
+                    <h3>🗽 First Amendment</h3>
+                    <p>Free speech protections, media relations, social media policies, and responses to censorship concerns.</p>
+                </div>
+
+                <div class="category-card" onclick="showDetail('judicial')" role="button" tabindex="0" aria-label="View Judicial Efforts details">
+                    <h3>⚖️ Judicial Efforts</h3>
+                    <p>Legal strategy, prosecution directives, justice system reform, and accountability measures for former officials.</p>
+                </div>
+
                 <div class="category-card potpourri-card" onclick="showDetail('potpourri')" role="button" tabindex="0" aria-label="View Potpourri details">
                     <h3>🎭 Potpourri</h3>
                     <p>Unconventional actions, controversies, and surprising moves.</p>
+                </div>
+
+                <div class="category-card project2025-card" onclick="showDetail('project2025')" role="button" tabindex="0" aria-label="View Project 2025 Implementation Tracker">
+                    <h3>📋 Project 2025</h3>
+                    <p>Implementation tracker for Heritage Foundation's presidential transition blueprint. Monitor progress, key personnel, and policy execution status.</p>
                 </div>
             </nav>
         </div>
@@ -1074,9 +1307,9 @@
                         <div class="scale-extreme scale-left">
                             "He's pushing dangerous conspiracy theories!"
                         </div>
-                        <div class="scale-line"></div>
+                        <div class="spectrum-arrow"></div>
                         <div class="political-icon icon-left"></div>
-                        <div class="scale-marker"></div>
+                        <div class="spectrum-center">⚖️</div>
                         <div class="political-icon icon-right"></div>
                         <div class="scale-extreme scale-right">
                             "Finally someone fighting Big Pharma!"
@@ -1116,6 +1349,11 @@
                             <div class="analysis-description">Promoting regenerative agriculture and reducing reliance on processed foods supports American farmers and rural communities while reducing dependence on industrial agriculture.</div>
                             <div class="analysis-tag tag-supportive">Rural Support</div>
                         </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Pharmaceutical Safety Reviews</div>
+                            <div class="analysis-description">Recent directives to review common medications like Tylenol (acetaminophen) for potential health risks demonstrate commitment to putting public health over pharmaceutical industry profits and ensuring medication safety.</div>
+                            <div class="analysis-tag tag-supportive">Drug Safety</div>
+                        </div>
                     </div>
 
                     <div id="maha-critical" class="perspective-content">
@@ -1128,6 +1366,11 @@
                             <div class="analysis-title">Access and Equity Issues</div>
                             <div class="analysis-description">Focusing on organic, "clean" foods without addressing affordability could worsen health disparities, as healthy food options are often more expensive and less accessible to low-income communities.</div>
                             <div class="analysis-tag tag-critical">Equity</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Premature Medication Reviews</div>
+                            <div class="analysis-description">Questioning widely-used medications like Tylenol without robust scientific evidence could create public health confusion and undermine trust in established medical treatments that have proven safety profiles.</div>
+                            <div class="analysis-tag tag-critical">Medical Evidence</div>
                         </div>
                     </div>
 
@@ -1162,6 +1405,11 @@
                         <div class="source-description">Detailed plans for reforming FDA regulations on food additives and pharmaceutical approvals to prioritize public health.</div>
                         <div class="source-meta">Source: Federal Health Agency Restructuring Plans</div>
                     </div>
+                    <div class="source-item">
+                        <div class="source-title">Tylenol Safety Review Directive</div>
+                        <div class="source-description">Recent administration directive ordering comprehensive safety review of acetaminophen (Tylenol) and other common over-the-counter medications for potential health risks.</div>
+                        <div class="source-meta">Source: Health and Human Services Department</div>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -1181,9 +1429,9 @@
                         <div class="scale-extreme scale-left">
                             "These tariffs are only going to cost us more at the store!"
                         </div>
-                        <div class="scale-line"></div>
+                        <div class="spectrum-arrow"></div>
                         <div class="political-icon icon-left"></div>
-                        <div class="scale-marker"></div>
+                        <div class="spectrum-center">⚖️</div>
                         <div class="political-icon icon-right"></div>
                         <div class="scale-extreme scale-right">
                             "Finally we're being treated fairly!"
@@ -1288,9 +1536,9 @@
                             <div class="scale-extreme scale-left">
                                 "He's destroying the planet for profits!"
                             </div>
-                            <div class="scale-line"></div>
+                            <div class="spectrum-arrow"></div>
                             <div class="political-icon icon-left"></div>
-                            <div class="scale-marker"></div>
+                            <div class="spectrum-center">⚖️</div>
                             <div class="political-icon icon-right"></div>
                             <div class="scale-extreme scale-right">
                                 "Energy independence makes us stronger!"
@@ -1380,9 +1628,9 @@
                             <div class="scale-extreme scale-left">
                                 "You're taking away from middle class to make billionaires richer!"
                             </div>
-                            <div class="scale-line"></div>
+                            <div class="spectrum-arrow"></div>
                             <div class="political-icon icon-left"></div>
-                            <div class="scale-marker"></div>
+                            <div class="spectrum-center">⚖️</div>
                             <div class="political-icon icon-right"></div>
                             <div class="scale-extreme scale-right">
                                 "Less handouts to those who don't work for it."
@@ -1477,9 +1725,9 @@
                             <div class="scale-extreme scale-left">
                                 "He's embarrassing us on the world stage!"
                             </div>
-                            <div class="scale-line"></div>
+                            <div class="spectrum-arrow"></div>
                             <div class="political-icon icon-left"></div>
-                            <div class="scale-marker"></div>
+                            <div class="spectrum-center">⚖️</div>
                             <div class="political-icon icon-right"></div>
                             <div class="scale-extreme scale-right">
                                 "Other countries finally respect America!"
@@ -1564,6 +1812,286 @@
                 </div>
             </div>
 
+            <!-- First Amendment Detail View -->
+            <div id="first-amendment-detail" class="detail-view hidden">
+                <div class="detail-header">
+                    <div class="detail-header-content">
+                        <h2 class="detail-title">First Amendment</h2>
+                        <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                    </div>
+
+                    <!-- Embedded Political Scale directly in header -->
+                    <div style="background: rgba(248, 250, 252, 0.95); padding: 20px; border-radius: 8px; margin: 20px auto; max-width: 1200px;">
+                        <div style="text-align: center; color: #2c3e50; font-size: 1rem; font-weight: 600; margin-bottom: 15px;">Free Speech Spectrum</div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; position: relative; height: 90px; margin: 10px 0;">
+                            <div style="position: absolute; left: 0; width: 20%; top: -5px; font-weight: 500; font-size: 0.75rem; background: white; color: #2c3e50; padding: 8px 6px; border-radius: 14px; box-shadow: 0 3px 12px rgba(0,0,0,0.2); line-height: 1.2; border: 2px solid #e2e8f0; min-height: 35px; display: flex; align-items: center; justify-content: center; text-align: center;">
+                                "He's attacking the press!"
+                            </div>
+                            <div style="position: absolute; bottom: 5px; left: 12%; right: 12%; height: 6px; background: #4a90e2; border-radius: 3px; box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);"></div>
+                            <div style="position: absolute; bottom: -15px; left: 8%; width: 48px; height: 48px; background-image: url('democrat.png'); background-size: contain; background-repeat: no-repeat; background-position: center; transform: translateX(-50%);"></div>
+                            <div style="position: absolute; bottom: 2px; left: 50%; width: 20px; height: 20px; background: white; border: 3px solid #4a90e2; border-radius: 50%; transform: translateX(-50%); box-shadow: 0 3px 10px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,255,255,0.8);"></div>
+                            <div style="position: absolute; bottom: -15px; right: 8%; width: 48px; height: 48px; background-image: url('republican.png'); background-size: contain; background-repeat: no-repeat; background-position: center; transform: translateX(50%);"></div>
+                            <div style="position: absolute; right: 0; width: 20%; top: -5px; font-weight: 500; font-size: 0.75rem; background: white; color: #2c3e50; padding: 8px 6px; border-radius: 14px; box-shadow: 0 3px 12px rgba(0,0,0,0.2); line-height: 1.2; border: 2px solid #e2e8f0; min-height: 35px; display: flex; align-items: center; justify-content: center; text-align: center;">
+                                "Finally fighting Big Tech censorship!"
+                            </div>
+                        </div>
+                        <div style="text-align: center; color: #4a5568; font-size: 0.85rem; margin-top: 15px; font-style: italic;">Free speech protection requires balanced oversight...</div>
+                    </div>
+                </div>
+
+                <div class="detail-content">
+
+                    <div class="summary-section">
+                    <h4>Policy Summary</h4>
+                    <p>Trump's First Amendment approach focuses on combating what he views as censorship by social media platforms and mainstream media bias. The policy emphasizes protecting conservative voices online, challenging Section 230 protections, and promoting alternative platforms that promise free speech.</p>
+                    <p>Key components include investigating social media companies for anti-conservative bias, supporting legislative changes to platform liability protections, and using the bully pulpit to challenge media narratives while promoting direct communication with supporters.</p>
+                </div>
+
+                <div class="analysis-section">
+                    <h4>Policy Analysis & Perspectives</h4>
+
+                    <div class="perspective-tabs">
+                        <button class="tab-button active" onclick="showPerspective('first-amendment', 'supportive')">Conservative View</button>
+                        <button class="tab-button" onclick="showPerspective('first-amendment', 'critical')">Liberal Critique</button>
+                        <button class="tab-button" onclick="showPerspective('first-amendment', 'contradictions')">Contradictions</button>
+                    </div>
+
+                    <div id="first-amendment-supportive" class="perspective-content active">
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Combating Big Tech Censorship</div>
+                            <div class="analysis-description">Social media platforms have demonstrated clear bias against conservative voices through unequal enforcement of community standards, shadow-banning, and coordinated deplatforming of right-leaning content creators and politicians.</div>
+                            <div class="analysis-tag tag-supportive">Anti-Censorship</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Protecting Political Speech</div>
+                            <div class="analysis-description">Government action is necessary to ensure that political discourse remains open and that powerful tech companies cannot silence political opposition or control election-related information flow.</div>
+                            <div class="analysis-tag tag-supportive">Political Protection</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Media Accountability</div>
+                            <div class="analysis-description">Challenging mainstream media bias and misinformation helps expose partisan reporting and provides alternative information sources to counter narrative control by established media outlets.</div>
+                            <div class="analysis-tag tag-supportive">Media Balance</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Direct Communication Benefits</div>
+                            <div class="analysis-description">Social media and rallies allow unfiltered communication with supporters, bypassing traditional media gatekeepers who may distort or selectively report presidential messages.</div>
+                            <div class="analysis-tag tag-supportive">Direct Access</div>
+                        </div>
+                    </div>
+
+                    <div id="first-amendment-critical" class="perspective-content">
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Government Overreach in Private Platforms</div>
+                            <div class="analysis-description">Using government power to pressure private companies about content moderation decisions undermines free market principles and creates dangerous precedents for government control of speech.</div>
+                            <div class="analysis-tag tag-critical">Government Overreach</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Press Freedom Concerns</div>
+                            <div class="analysis-description">Constant attacks on mainstream media, labeling negative coverage as "fake news," and threatening regulatory action against news organizations undermines press freedom and democratic accountability.</div>
+                            <div class="analysis-tag tag-critical">Press Freedom</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Misinformation Amplification</div>
+                            <div class="analysis-description">Challenging content moderation efforts may increase the spread of misinformation, conspiracy theories, and harmful content that platforms are trying to limit for public safety reasons.</div>
+                            <div class="analysis-tag tag-critical">Misinformation Risk</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Selective Free Speech Support</div>
+                            <div class="analysis-description">First Amendment advocacy appears focused primarily on protecting conservative speech while showing less concern for other forms of expression or when government actions target liberal voices.</div>
+                            <div class="analysis-tag tag-critical">Selective Application</div>
+                        </div>
+                    </div>
+
+                    <div id="first-amendment-contradictions" class="perspective-content">
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Free Market vs. Platform Regulation</div>
+                            <div class="analysis-description">Demanding government intervention in private platform decisions contradicts free-market conservative principles that typically oppose government regulation of private businesses.</div>
+                            <div class="analysis-tag tag-contradiction">Market Inconsistency</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Free Speech vs. Defamation Threats</div>
+                            <div class="analysis-description">While championing free speech rights, frequently threatens legal action against critics, journalists, and former associates for their speech about him.</div>
+                            <div class="analysis-tag tag-contradiction">Speech Selective</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Anti-Establishment vs. Government Power</div>
+                            <div class="analysis-description">Using federal government power to pressure private companies conflicts with anti-establishment messaging and concerns about government overreach.</div>
+                            <div class="analysis-tag tag-contradiction">Power Paradox</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Truth Social vs. Platform Criticism</div>
+                            <div class="analysis-description">Creating Truth Social while criticizing other platforms for bias suggests the issue may be control rather than principled free speech concerns.</div>
+                            <div class="analysis-tag tag-contradiction">Platform Control</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sources-section">
+                    <h4>Supporting Sources</h4>
+                    <div class="source-item">
+                        <div class="source-title">Section 230 Reform Proposals</div>
+                        <div class="source-description">Legislative proposals to modify social media platform liability protections and content moderation policies to address perceived anti-conservative bias.</div>
+                        <div class="source-meta">Source: Congressional Legislative Proposals</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">Social Media Platform Investigations</div>
+                        <div class="source-description">Documentation of calls for federal investigations into Big Tech censorship practices and content moderation policies affecting political speech.</div>
+                        <div class="source-meta">Source: Federal Communications Commission Records</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">Truth Social Platform Development</div>
+                        <div class="source-description">Creation of alternative social media platform positioned as defending free speech and providing uncensored communication for conservatives.</div>
+                        <div class="source-meta">Source: Trump Media & Technology Group</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">Media Relations Strategy</div>
+                        <div class="source-description">Analysis of communication strategies bypassing traditional media through rallies, social platforms, and direct supporter engagement.</div>
+                        <div class="source-meta">Source: Campaign Communication Analysis</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Judicial Efforts Detail View -->
+            <div id="judicial-detail" class="detail-view hidden">
+                <div class="detail-header">
+                    <div class="detail-header-content">
+                        <h2 class="detail-title">Judicial Efforts</h2>
+                        <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                    </div>
+
+                    <!-- Embedded Political Scale directly in header -->
+                    <div style="background: rgba(248, 250, 252, 0.95); padding: 20px; border-radius: 8px; margin: 20px auto; max-width: 1200px;">
+                        <div style="text-align: center; color: #2c3e50; font-size: 1rem; font-weight: 600; margin-bottom: 15px;">Justice System Spectrum</div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; position: relative; height: 90px; margin: 10px 0;">
+                            <div style="position: absolute; left: 0; width: 20%; top: -5px; font-weight: 500; font-size: 0.75rem; background: white; color: #2c3e50; padding: 8px 6px; border-radius: 14px; box-shadow: 0 3px 12px rgba(0,0,0,0.2); line-height: 1.2; border: 2px solid #e2e8f0; min-height: 35px; display: flex; align-items: center; justify-content: center; text-align: center;">
+                                "He's weaponizing the DOJ!"
+                            </div>
+                            <div style="position: absolute; bottom: 5px; left: 12%; right: 12%; height: 6px; background: #4a90e2; border-radius: 3px; box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);"></div>
+                            <div style="position: absolute; bottom: -15px; left: 8%; width: 48px; height: 48px; background-image: url('democrat.png'); background-size: contain; background-repeat: no-repeat; background-position: center; transform: translateX(-50%);"></div>
+                            <div style="position: absolute; bottom: 2px; left: 50%; width: 20px; height: 20px; background: white; border: 3px solid #4a90e2; border-radius: 50%; transform: translateX(-50%); box-shadow: 0 3px 10px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,255,255,0.8);"></div>
+                            <div style="position: absolute; bottom: -15px; right: 8%; width: 48px; height: 48px; background-image: url('republican.png'); background-size: contain; background-repeat: no-repeat; background-position: center; transform: translateX(50%);"></div>
+                            <div style="position: absolute; right: 0; width: 20%; top: -5px; font-weight: 500; font-size: 0.75rem; background: white; color: #2c3e50; padding: 8px 6px; border-radius: 14px; box-shadow: 0 3px 12px rgba(0,0,0,0.2); line-height: 1.2; border: 2px solid #e2e8f0; min-height: 35px; display: flex; align-items: center; justify-content: center; text-align: center;">
+                                "Finally holding criminals accountable!"
+                            </div>
+                        </div>
+                        <div style="text-align: center; color: #4a5568; font-size: 0.85rem; margin-top: 15px; font-style: italic;">Justice requires both accountability and due process...</div>
+                    </div>
+                </div>
+
+                <div class="detail-content">
+
+                    <div class="summary-section">
+                    <h4>Policy Summary</h4>
+                    <p>Trump's judicial strategy focuses on holding former government officials accountable for what he views as corruption and misconduct during previous administrations. Recent directives include prosecuting former FBI Director James Comey and other officials involved in investigations against Trump.</p>
+                    <p>Key components include directing the Department of Justice to investigate former officials, reforming FBI and intelligence agency oversight, implementing accountability measures for government misconduct, and pursuing prosecutions for alleged political weaponization of law enforcement.</p>
+                </div>
+
+                <div class="analysis-section">
+                    <h4>Policy Analysis & Perspectives</h4>
+
+                    <div class="perspective-tabs">
+                        <button class="tab-button active" onclick="showPerspective('judicial', 'supportive')">Conservative View</button>
+                        <button class="tab-button" onclick="showPerspective('judicial', 'critical')">Liberal Critique</button>
+                        <button class="tab-button" onclick="showPerspective('judicial', 'contradictions')">Contradictions</button>
+                    </div>
+
+                    <div id="judicial-supportive" class="perspective-content active">
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Correcting Two-Tiered Justice</div>
+                            <div class="analysis-description">The justice system has operated with different standards for political elites versus ordinary Americans. Prosecuting officials like Comey ensures that no one is above the law and restores equal justice under law.</div>
+                            <div class="analysis-tag tag-supportive">Equal Justice</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Accountability for Government Misconduct</div>
+                            <div class="analysis-description">FBI and DOJ officials who participated in politically motivated investigations, FISA abuse, and election interference must face consequences to prevent future corruption and restore public trust.</div>
+                            <div class="analysis-tag tag-supportive">Government Accountability</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Deterring Future Political Weaponization</div>
+                            <div class="analysis-description">Only by prosecuting those who weaponized law enforcement for political purposes can future administrations be deterred from similar abuses of power.</div>
+                            <div class="analysis-tag tag-supportive">Deterrence</div>
+                        </div>
+                        <div class="analysis-point supportive">
+                            <div class="analysis-title">Restoring Constitutional Order</div>
+                            <div class="analysis-description">Holding deep state actors accountable helps restore proper constitutional boundaries between executive agencies and ensures they serve the American people, not political interests.</div>
+                            <div class="analysis-tag tag-supportive">Constitutional Restoration</div>
+                        </div>
+                    </div>
+
+                    <div id="judicial-critical" class="perspective-content">
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Political Revenge Prosecutions</div>
+                            <div class="analysis-description">Directing prosecutions of former officials who investigated Trump appears to be politically motivated revenge rather than legitimate law enforcement, undermining the rule of law.</div>
+                            <div class="analysis-tag tag-critical">Political Weaponization</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">DOJ Independence Violation</div>
+                            <div class="analysis-description">Presidential directives to prosecute specific individuals violate long-standing norms about Department of Justice independence and proper separation between politics and prosecutorial decisions.</div>
+                            <div class="analysis-tag tag-critical">Institutional Independence</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Chilling Effect on Law Enforcement</div>
+                            <div class="analysis-description">Prosecuting officials for conducting legitimate investigations creates a chilling effect that may prevent future law enforcement officers from properly investigating powerful individuals.</div>
+                            <div class="analysis-tag tag-critical">Investigative Integrity</div>
+                        </div>
+                        <div class="analysis-point critical">
+                            <div class="analysis-title">Democratic Norm Erosion</div>
+                            <div class="analysis-description">Using presidential power to target political opponents and former officials who opposed you undermines democratic norms and moves toward authoritarian governance patterns.</div>
+                            <div class="analysis-tag tag-critical">Democratic Erosion</div>
+                        </div>
+                    </div>
+
+                    <div id="judicial-contradictions" class="perspective-content">
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Law and Order vs. Selective Prosecution</div>
+                            <div class="analysis-description">Strong "law and order" messaging conflicts with directing prosecutions based on political considerations rather than evidence-based legal standards.</div>
+                            <div class="analysis-tag tag-contradiction">Selective Justice</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Anti-Deep State vs. Government Power</div>
+                            <div class="analysis-description">Claims about fighting the "deep state" contradict using extensive federal government power to target individuals who investigated or opposed him.</div>
+                            <div class="analysis-tag tag-contradiction">Power Paradox</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Constitution vs. Personal Grievances</div>
+                            <div class="analysis-description">Constitutional oath to faithfully execute laws conflicts with using presidential power to settle personal scores against former officials.</div>
+                            <div class="analysis-tag tag-contradiction">Constitutional Duty</div>
+                        </div>
+                        <div class="analysis-point contradiction">
+                            <div class="analysis-title">Anti-Weaponization vs. Weaponizing Justice</div>
+                            <div class="analysis-description">Criticizing the weaponization of the justice system while simultaneously directing it to prosecute political opponents creates obvious contradictions.</div>
+                            <div class="analysis-tag tag-contradiction">Weaponization Hypocrisy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sources-section">
+                    <h4>Supporting Sources</h4>
+                    <div class="source-item">
+                        <div class="source-title">Comey Prosecution Directive</div>
+                        <div class="source-description">Recent presidential directive ordering the Department of Justice to pursue prosecution of former FBI Director James Comey for alleged misconduct during Trump investigations.</div>
+                        <div class="source-meta">Source: Executive Branch Directives</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">DOJ Reform Proposals</div>
+                        <div class="source-description">Comprehensive plans for reforming Department of Justice operations and oversight to prevent future political weaponization and ensure accountability.</div>
+                        <div class="source-meta">Source: Justice Department Transition Plans</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">FBI Accountability Measures</div>
+                        <div class="source-description">Proposed reforms to FBI oversight, leadership accountability, and investigative procedures to address alleged misconduct and restore public trust.</div>
+                        <div class="source-meta">Source: Federal Bureau of Investigation Reform Documents</div>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-title">Deep State Investigation Framework</div>
+                        <div class="source-description">Strategic framework for investigating and prosecuting government officials alleged to have participated in political targeting and abuse of power.</div>
+                        <div class="source-meta">Source: Special Counsel Investigation Plans</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
             <!-- Potpourri Detail View -->
             <div id="potpourri-detail" class="detail-view hidden">
                 <div class="detail-header">
@@ -1579,9 +2107,9 @@
                             <div class="scale-extreme scale-left">
                                 "He's attacking our democracy!"
                             </div>
-                            <div class="scale-line"></div>
+                            <div class="spectrum-arrow"></div>
                             <div class="political-icon icon-left"></div>
-                            <div class="scale-marker"></div>
+                            <div class="spectrum-center">⚖️</div>
                             <div class="political-icon icon-right"></div>
                             <div class="scale-extreme scale-right">
                                 "He's draining the swamp!"
@@ -1706,6 +2234,156 @@
                 </div>
             </div>
 
+            <!-- Project 2025 Detail View -->
+            <div id="project2025-detail" class="detail-view hidden">
+                <div class="detail-header">
+                    <div class="detail-header-content">
+                        <h2 class="detail-title">Project 2025 Implementation Tracker</h2>
+                        <button class="back-btn" onclick="showCategories()">← Back to Categories</button>
+                    </div>
+                </div>
+
+                <div class="detail-content">
+                    <!-- Project 2025 Status Dashboard -->
+                    <div class="project2025-dashboard">
+                        <div class="dashboard-title">Implementation Status Overview</div>
+                        <div class="dashboard-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">22</div>
+                                <div class="stat-label">Key Personnel Appointed</div>
+                                <div class="stat-status implementing">🟢 Active</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Policy Initiatives Launched</div>
+                                <div class="stat-status implementing">🟡 In Progress</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">8</div>
+                                <div class="stat-label">Structural Reforms Started</div>
+                                <div class="stat-status planned">🔵 Planned</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="summary-section">
+                        <h4>What is Project 2025?</h4>
+                        <p>Project 2025, officially titled "Mandate for Leadership: The Conservative Promise," is a comprehensive 920-page presidential transition blueprint developed by the Heritage Foundation. It outlines detailed plans for restructuring the federal government, implementing conservative policies, and replacing thousands of federal employees with ideologically aligned personnel.</p>
+                        <p>The project involves over 100 conservative organizations and former Trump officials, providing specific policy recommendations and implementation strategies across all federal departments and agencies.</p>
+                    </div>
+
+                    <!-- Russell Vought Section -->
+                    <div class="vought-section">
+                        <h4>Key Figure: Russell Vought</h4>
+                        <div class="vought-profile">
+                            <div class="vought-info">
+                                <h5>Current Role: Director of the Office of Management and Budget (Nominated)</h5>
+                                <p><strong>Project 2025 Connection:</strong> Vought led the "Presidential Administration Academy" within Project 2025, training potential Trump administration appointees on implementing the conservative agenda. He authored significant portions of the OMB chapter and personnel strategy.</p>
+                                <p><strong>Previous Experience:</strong> Served as OMB Director (2020-2021) and Deputy Director (2018-2020) under Trump. Founded the Center for Renewing America, a key Project 2025 partner organization.</p>
+                                <p><strong>Implementation Role:</strong> As OMB Director, Vought would control federal spending, regulatory reviews, and coordination across agencies—making him central to executing Project 2025's government restructuring plans.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h4>Implementation Tracking & Analysis</h4>
+
+                        <div class="perspective-tabs">
+                            <button class="tab-button active" onclick="showPerspective('project2025', 'implemented')">Already Implemented</button>
+                            <button class="tab-button" onclick="showPerspective('project2025', 'progress')">In Progress</button>
+                            <button class="tab-button" onclick="showPerspective('project2025', 'planned')">Future Plans</button>
+                        </div>
+
+                        <div id="project2025-implemented" class="perspective-content active">
+                            <div class="implementation-point implemented">
+                                <div class="implementation-title">Personnel Appointments from Heritage Network</div>
+                                <div class="implementation-description">Multiple key positions filled with individuals directly connected to Project 2025 development, including Russell Vought (OMB), Tom Homan (Border Czar), and other Heritage Foundation-recommended candidates.</div>
+                                <div class="implementation-tag tag-implemented">✅ Completed</div>
+                                <div class="implementation-date">January 2025</div>
+                            </div>
+                            <div class="implementation-point implemented">
+                                <div class="implementation-title">Executive Order on Federal Workforce Reform</div>
+                                <div class="implementation-description">Early executive orders targeting federal employee protections, establishing new accountability measures, and beginning the process to reclassify civil service positions—directly from Project 2025 playbook.</div>
+                                <div class="implementation-tag tag-implemented">✅ Completed</div>
+                                <div class="implementation-date">January 2025</div>
+                            </div>
+                            <div class="implementation-point implemented">
+                                <div class="implementation-title">Department of Education Restructuring Begin</div>
+                                <div class="implementation-description">Initial steps toward restructuring DOE operations, including personnel changes and policy reviews aligned with Project 2025's education reform agenda.</div>
+                                <div class="implementation-tag tag-implemented">✅ Started</div>
+                                <div class="implementation-date">January 2025</div>
+                            </div>
+                        </div>
+
+                        <div id="project2025-progress" class="perspective-content">
+                            <div class="implementation-point progress">
+                                <div class="implementation-title">Mass Federal Employee Reclassification</div>
+                                <div class="implementation-description">Converting thousands of federal positions from protected civil service to at-will employment (Schedule F revival), allowing political appointees to replace career professionals across agencies.</div>
+                                <div class="implementation-tag tag-progress">🟡 In Progress</div>
+                                <div class="implementation-timeline">Timeline: 6-12 months</div>
+                            </div>
+                            <div class="implementation-point progress">
+                                <div class="implementation-title">DOJ Independence Reduction</div>
+                                <div class="implementation-description">Implementing increased White House control over DOJ investigations and prosecutions, reducing traditional independence of federal law enforcement from political influence.</div>
+                                <div class="implementation-tag tag-progress">🟡 In Progress</div>
+                                <div class="implementation-timeline">Timeline: Ongoing</div>
+                            </div>
+                            <div class="implementation-point progress">
+                                <div class="implementation-title">Federal Agency Consolidation</div>
+                                <div class="implementation-description">Beginning merger and elimination of select federal agencies and programs deemed unnecessary, starting with smaller agencies before targeting larger departments.</div>
+                                <div class="implementation-tag tag-progress">🟡 Planning</div>
+                                <div class="implementation-timeline">Timeline: 12-24 months</div>
+                            </div>
+                        </div>
+
+                        <div id="project2025-planned" class="perspective-content">
+                            <div class="implementation-point planned">
+                                <div class="implementation-title">Department of Education Elimination</div>
+                                <div class="implementation-description">Complete dismantling of the federal Department of Education, transferring limited functions to other agencies while eliminating most federal education oversight and funding programs.</div>
+                                <div class="implementation-tag tag-planned">🔵 Planned</div>
+                                <div class="implementation-timeline">Requires Congressional Action</div>
+                            </div>
+                            <div class="implementation-point planned">
+                                <div class="implementation-title">Federal Law Enforcement Restructuring</div>
+                                <div class="implementation-description">Major reorganization of FBI, ATF, and other federal law enforcement agencies to reduce independence and increase political accountability to the President.</div>
+                                <div class="implementation-tag tag-planned">🔵 Planned</div>
+                                <div class="implementation-timeline">Timeline: 18-36 months</div>
+                            </div>
+                            <div class="implementation-point planned">
+                                <div class="implementation-title">Social Program Reductions</div>
+                                <div class="implementation-description">Significant cuts to federal social programs, food assistance, healthcare subsidies, and welfare programs through budget reconciliation and regulatory changes.</div>
+                                <div class="implementation-tag tag-planned">🔵 Planned</div>
+                                <div class="implementation-timeline">Budget Process Dependent</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sources-section">
+                        <h4>Supporting Sources</h4>
+                        <div class="source-item">
+                            <div class="source-title">Project 2025: Mandate for Leadership</div>
+                            <div class="source-description">The complete 920-page Heritage Foundation policy blueprint covering all federal departments and agencies with detailed implementation timelines and personnel recommendations.</div>
+                            <div class="source-meta">Source: Heritage Foundation</div>
+                        </div>
+                        <div class="source-item">
+                            <div class="source-title">Presidential Administration Academy Training Materials</div>
+                            <div class="source-description">Russell Vought's training program materials for potential Trump appointees, including government restructuring strategies and policy implementation guides.</div>
+                            <div class="source-meta">Source: Center for Renewing America</div>
+                        </div>
+                        <div class="source-item">
+                            <div class="source-title">Heritage Foundation Personnel Database</div>
+                            <div class="source-description">Comprehensive database of vetted conservative candidates for federal appointments, organized by department and policy area alignment.</div>
+                            <div class="source-meta">Source: Heritage Foundation Transition Team</div>
+                        </div>
+                        <div class="source-item">
+                            <div class="source-title">Executive Schedule F Documentation</div>
+                            <div class="source-description">Legal analysis and implementation plans for converting civil service positions to at-will employment, removing job protections for federal employees.</div>
+                            <div class="source-meta">Source: Office of Personnel Management</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 
@@ -1789,6 +2467,8 @@
                 'energy': 'Energy Policy',
                 'economy': 'Economic Policy',
                 'foreign': 'Foreign Policy',
+                'first-amendment': 'First Amendment',
+                'judicial': 'Judicial Efforts',
                 'potpourri': 'Potpourri'
             };
             return names[category] || category;

@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const categories = ['immigration', 'maha', 'tariffs', 'energy', 'economy', 'foreign', 'potpourri'];
+    const categories = ['immigration', 'maha', 'tariffs', 'energy', 'economy', 'foreign', 'first-amendment', 'judicial', 'potpourri', 'project2025'];
     const updatePromises = [];
 
     // Update each category
